@@ -1,0 +1,41 @@
+#intro{
+	height: 30px;
+	line-height: 30px;
+	font-weight: 900;
+	background: #b3c7ec;
+	color: #ffffff;
+	text-align: center;
+	margin-top: 20px; 
+	margin-bottom: 20px;
+}
+.member img{
+	padding: 0;
+}
+.content{
+	padding-right: 0;
+}
+.content h4,h5{
+	color: #45444e;
+}
+.content p{
+	text-indent: 25px;
+	width: 98%;
+	font-size: 13px;
+	color: #7d7c89;
+}
+/*.container{
+	margin-bottom: 30px;
+}
+.item{
+	margin-bottom: 10px;
+}*/
+
+
+.item{
+	margin-bottom: 30px;
+	padding: 0;
+}
+
+
+
+
