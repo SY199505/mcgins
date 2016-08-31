@@ -272,6 +272,18 @@ class Admin extends CI_Controller {
         $this -> load -> view('admin/course-edit', array('course' => $course));
     }
 
+    public function edit_job(){
+        $this -> load -> model('job_model');
+        $job = $this -> job_model -> get_all();
+        $this -> load -> view('admin/job-edit', array('job' => $job));
+    }
+
+    public function edit_news($news_id)
+    {
+        $this -> load -> model('activity_model');
+        $news = $this -> activity_model -> get_by_id($news_id);
+        $this -> load -> view('admin/news-edit', array('news' => $news));
+    }
     /**
      *   @save_course
      *   @保存课程信息
@@ -310,6 +322,52 @@ class Admin extends CI_Controller {
             redirect('admin/course_mgr');
         }else{
             echo '修改课程信息失败!';
+        }
+    }
+
+    public function update_job()
+    {
+        $this -> load -> model('job_model');
+        // foreach($_POST as $key => $value){
+        //     $data = array(
+        //         'job' => $value
+
+        //     )
+        // };
+            var_dump($_POST);
+            die();
+            $row = $this -> job_model -> update_job($_POST);
+    }
+
+    public function update_contact()
+    {
+        $this -> load -> model('contact_model');
+        $tel = $this -> input -> post('tel');
+        $wechat = $this -> input -> post('wechat');
+        $mail = $this -> input -> post('mail');
+        $website = $this -> input -> post('website');
+        $addr = $this -> input -> post('addr');
+        $phone = $this -> input -> post('phone');
+        $row = $this -> contact_model -> update_contact($tel, $wechat, $mail, $website, $addr, $phone);
+        if($row > 0){
+            redirect('admin/contact_mgr');
+        }else{
+            echo '未修改或修改失败！';
+        }   
+    }
+
+    public function update_news()
+    {
+        $this -> load -> model('activity_model');
+        $activity_id = $this -> input -> post('activity_id');
+        $activity_title = $this -> input -> post('activity_title');
+        $activity_desc = $this -> input -> post('activity_desc');
+        $activity_content = $this -> input -> post('activity_content');
+        $row = $this -> activity_model -> update_news($activity_id, $activity_title, $activity_desc, $activity_content);
+        if($row >0){
+            redirect('admin/news_mgr');
+        }else{
+            echo '未修改或修改失败！';
         }
     }
 

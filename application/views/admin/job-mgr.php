@@ -36,56 +36,74 @@
         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong></div>
       </div>
       <!-- 文本域 -->
-        <div class="am-form-group">
-          <label for="doc-ta-1">教师福利：</label>
-          <textarea class="" rows="10" cols="90" id="doc-ta-1">
-            <?php 
-                foreach($jobInfo as $job){
-                    echo $job -> job_welfare ;
-                }
-            ?> 
-          </textarea>
-        </div>    
-        <div class="am-form-group">
-          <label for="doc-ta-1">教师要求&nbsp;&nbsp;&nbsp;&nbsp;：</label>
-          <textarea class="" rows="10" cols="90" id="doc-ta-1">
-            <?php 
-                foreach($jobInfo as $job){
-                    echo $job -> job_teacher_recruit ;
-                }
-            ?> 
-          </textarea>
-        </div>   
-        <div class="am-form-group">
-          <label for="doc-ta-1">教师任职资格&nbsp;&nbsp;：</label>
-          <textarea class="" rows="10" cols="90" id="doc-ta-1">
-            <?php 
-                foreach($jobInfo as $job){
-                    echo $job -> job_teacher_qualifications ;
-                }
-            ?> 
-          </textarea>
-        </div>  
-        <div class="am-form-group">
-          <label for="doc-ta-1">学习顾问要求&nbsp;&nbsp;：</label>
-          <textarea class="" rows="10" cols="90" id="doc-ta-1">
-            <?php 
-                foreach($jobInfo as $job){
-                    echo $job -> job_advisor_study ;
-                }
-            ?> 
-          </textarea>
-        </div>   
-        <div class="am-form-group">
-          <label for="doc-ta-1">学习顾问任职资格：</label>
-          <textarea class="" rows="10" cols="90" id="doc-ta-1">
-            <?php 
-                foreach($jobInfo as $job){
-                    echo $job -> job_advisor_qualifications ;
-                }
-            ?> 
-          </textarea>
-        </div>    
+    <div class="am-g">
+      <div class="am-u-sm-12">
+        <table class="am-table am-table-striped am-table-hover table-main">
+          <thead>
+          <tr>
+            <th>教师福利</th>
+            <th>教师职责</th>
+            <th>教师要求</th>
+            <th>课程顾问职责</th>
+            <th>课程顾问要求</th>
+          </tr>
+          </thead>
+          <tbody>
+          <?php
+          foreach($jobInfo as $job){
+            ?>
+            <tr>
+              <td><?php echo $job -> job_welfare; ?></td>
+              <td><?php echo $job -> job_teacher_recruit; ?></td>
+              <td><?php echo $job -> job_teacher_qualifications; ?></td>
+              <td><?php echo $job -> job_advisor_study; ?></td>
+              <td><?php echo $job -> job_advisor_qualifications; ?></td>
+            </tr>
+            <?php
+          }
+          ?>
+            <tr>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="btn-edit am-btn am-btn-default am-btn-xs am-text-secondary" data-id="job_welfare"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="btn-edit am-btn am-btn-default am-btn-xs am-text-secondary" data-id="job_teacher_recruit"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="btn-edit am-btn am-btn-default am-btn-xs am-text-secondary" data-id="job_teacher_qualifications"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="btn-edit am-btn am-btn-default am-btn-xs am-text-secondary" data-id="job_advisor_study"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="btn-edit am-btn am-btn-default am-btn-xs am-text-secondary" data-id="job_advisor_qualifications"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>    
     
     </div>
 
@@ -108,5 +126,13 @@
 <!--<![endif]-->
 <script src="assets/js/amazeui.min.js"></script>
 <script src="assets/js/app.js"></script>
+<script>
+    $(function(){
+      $('.btn-edit').on('click', function(){
+        var name = $(this).data('id');
+        location.href = "admin/edit_job/"+name;
+      });        
+    });
+</script>
 </body>
 </html>

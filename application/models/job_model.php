@@ -9,4 +9,18 @@ class Job_model extends CI_Model {
         return $query->result() ;
 
     }
+
+    public function update_job($POST)
+    {
+    	$i = 1;
+    		var_dump($value);
+    		die();
+    	// foreach($POST as $key => $value){
+    	// 	$this -> db -> where('job_id', $i);
+    	// 	$this -> db -> update('t_job', array(
+    	// 		''
+    	// 	));
+    	// 	$i++;
+    	// }
+    }
 }

@@ -35,23 +35,52 @@
       <div class="am-cf am-padding">
         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong></div>
       </div>
-          <?php 
-            $i = 0;
-            foreach($activityInfo as $activity){
-          ?>
+    <div class="am-g">
+      <div class="am-u-sm-12 am-u-md-6">
+        <div class="am-btn-toolbar">
+          <div class="am-btn-group am-btn-group-xs">
+            <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span><a href="admin/add_course"> 新增</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-            <li>
-              <a href="welcome/article/<?php  echo $activity -> activity_id;?>"><img src="img/<?php  echo $activity -> activity_img;?>" class="img-responsive col-md-4" alt="">
-                <div class="col-md-8">
-                  <h4><?php  echo $activity -> activity_title;?></h4>
-                  <p><?php  echo $activity -> activity_desc;?></p>
+    <div class="am-g">
+      <div class="am-u-sm-12">
+        <table class="am-table am-table-striped am-table-hover table-main">
+          <thead>
+          <tr>
+            <th>序号</th>
+            <th>新闻标题</th>
+            <th>新闻内容</th>
+            <th>操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          <?php
+          foreach($activityInfo as $activity){
+            ?>
+            <tr>
+              <td><img src="img/<?php  echo $activity -> activity_img;?>" alt=""></td>
+              <td><?php echo $activity -> activity_title; ?></td>
+              <td><?php echo $activity -> activity_desc; ?></td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="btn-edit am-btn am-btn-default am-btn-xs am-text-secondary" data-id="<?php echo $activity -> activity_id;?>"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                    <button class="btn-delete am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" data-id="<?php echo $activity -> activity_id;?>">><span class="am-icon-trash-o"></span> 删除</button>
+                  </div>
                 </div>
-              </a>
-            </li>
+              </td>
+            </tr>
+            <?php
+          }
+          ?>
+          </tbody>
+        </table>
+      </div>
 
-          <?php 
-            }
-          ;?>
+    </div>
       
     
     </div>
@@ -76,4 +105,18 @@
 <script src="assets/js/amazeui.min.js"></script>
 <script src="assets/js/app.js"></script>
 </body>
+<script>
+  $(function(){
+    $('.btn-edit').on('click', function(){
+      var id = $(this).data('id');
+      location.href="admin/edit_news/"+id;
+    });
+    $('.btn-delete').on('click', function(){
+      var id = $(this).data('id');
+      if(   confirm('您确定要删除这条信息吗？')   ){
+        location.href="admin/delete_news/"+id;
+      }
+    });
+  });
+</script>
 </html>

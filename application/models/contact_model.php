@@ -9,4 +9,18 @@ class Contact_model extends CI_Model {
         return $query->result();
 
     }
+
+    public function update_contact($tel, $wechat, $mail, $website, $addr, $phone)
+    {
+    	$this -> db -> where('webinfo_id', 1);
+    	$this -> db -> update('t_webinfo', array(
+    		'webinfo_tel' => $tel,
+    		'webinfo_wechat' => $wechat,
+    		'webinfo_mail' => $mail,
+    		'webinfo_website' => $website,
+    		'webinfo_addr' => $addr,
+    		'webinfo_phone' => $phone
+    	));
+    	return $this -> db -> affected_rows();
+    }
 }

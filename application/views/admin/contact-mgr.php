@@ -31,24 +31,48 @@
 
   <!-- content start -->
   <div class="admin-content">
-    <div class="admin-content-body">
-      <div class="am-cf am-padding">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong></div>
-      </div>
-        <div class="title text-center">联系我们</div>
-        <ul>
-          <li>电话 Telephone: <input type="text" value="<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_tel;}?>"></li>
-          <li>微信 WeChat: <input type="text" value="<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_wechat;}?>"></li>
-          <li>邮箱 Email: <input type="text" value="<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_mail;}?>"></li>
-          <li>网址 Website: <input type="text" value="<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_website;}?>"></li>
-          地址：
-          <li><input type="text" value="<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_addr;}?>">
-          </li>
-        </ul>
-    
+
+    <div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">课程列表界面</strong> | <a class="am-badge am-badge-success am-square">Admin List</a></div>
     </div>
 
-    <?php include 'admin-footer.php' ;?>
+
+    <div class="am-g">
+      <div class="am-u-sm-12">
+        <table class="am-table am-table-striped am-table-hover table-main">
+          <thead>
+          <tr>
+            <th>电话 Telephone</th>
+            <th>微信 WeChat</th>
+            <th>邮箱 Email</th>
+            <th>网址 Website</th>
+            <th>地址</th>
+            <th>手机</th>
+            <th>操作</th>
+          </tr>
+          </thead>
+          <tbody>
+            <form action="admin/update_contact" method="post">
+                <tr>
+                  <td><input type="text" name="tel" value="<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_tel;}?>"></td>
+                  <td><input type="text" name="wechat" value="<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_wechat;}?>"></td>
+                  <td><input type="text" name="mail" value="<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_mail;}?>"></td>
+                  <td><input type="text" name="website" value="<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_website;}?>"></td>
+                  <td><input type="text" name="addr" value="<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_addr;}?>">
+                  </td>
+                  <td><input type="text" name="phone" value="<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_phone;}?>">
+                  </td>
+                  <td>
+                  <input type="submit">
+                  </td>
+                </tr>
+                
+            </form>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
   </div>
   <!-- content end -->
 
