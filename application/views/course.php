@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,7 @@
 
 	</style>
 </head>
-<body>
+<body ng-controller="myCtrl">
 <!-- 头部 -->
 <?php include 'header.php'; ?>
 <!-- 头部结束 -->
@@ -31,7 +31,8 @@
 			<!-- 课程安排 -->
 			<div id="course-plan" class="text-center">
 				<p class="title">麦金思专业的学习顾问和老师会根据孩子的实际情况酌情安排最合适的学习规划。</p>
-				<img src="img/learn-plan.jpg" alt="" class="center-block img-responsive">
+				<!-- <img src="img/learn-plan.jpg" alt="" class="center-block img-responsive"> -->
+				<div id="main" class="center-block" style="width:600px;height:400px;"></div>
 				<table class="col-md-10 col-md-offset-1">
 					<thead class="">
 						<tr>
@@ -92,6 +93,83 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.goup.min.js"></script>
 	<script src="js/style.js"></script>
+<script src="js/echart.min.js"></script>
+	<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+        	// color: ['#3398DB'],
+        	color: ['#5cb85c'],
+        	// color: ['#d9534f'],
+        	// color: ['#4285f4'],
+        	// color: ['#f0ad4e'],
+        	//backgroundColor: '-webkit-gradient(linear, 0% 0%, 0% 100%,from(#15A216), to(#fafafa))',	
+            title: {
+                text: '学习难度'
+            },
+            tooltip : {
+		        trigger: 'axis',
+		        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+		            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+		        }
+    		},
+		    grid: {
+		        left: '3%',
+		        right: '4%',
+		        bottom: '3%',
+		        containLabel: true
+		    },
+            legend: {
+                data:['百分比']
+            },
+            xAxis: {
+                data: ["4 ~ 6岁","7 ~ 9岁","10 ~ 12岁","13 ~ 15岁"]
+            },
+            yAxis: {},
+            series: [{
+                name: '学习难度',
+                type: 'bar',
+                barWidth: '30%',
+                //data: [25, 50, 60, 70]
+                data:[
+			              {
+			                value:25,
+			                itemStyle:{
+			                  //normal:{color:'#f0ad4e'}
+								normal:{color:'#e28400'}
+			              	}
+			              }, 
+			              {
+			                value:50,
+			                itemStyle:{
+			                  //normal:{color:'#5cb85c'}
+								normal:{color:'#eaab00'}
+			              	}
+			              },
+			              {
+			                value:60,
+			                itemStyle:{
+			                  //normal:{color:'#4285f4'}
+								normal:{color:'#829d00'}
+			              	}
+			              },
+			              {
+			                value:70,
+			                itemStyle:{
+			                  //normal:{color:'#d9534f'}
+								normal:{color:'#3f8715'}
+			              	}
+			              }
+			 		],
+					animationDuration: 3000
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
 </body>
 </html>
 

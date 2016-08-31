@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,7 @@
 
 	</style>
 </head>
-<body>
+<body ng-controller="myCtrl">
 <!-- 头部 -->
 <?php include 'header.php'; ?>
 <!-- 头部结束 -->

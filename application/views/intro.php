@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/intro.css">
 	</head>
-	<body>
+	<body ng-controller="myCtrl">
 		<!-- 头部 -->
 		<?php include 'header.php'; ?>
 		<!-- 头部结束 -->
@@ -18,12 +18,13 @@
 			<div class="row">
 				<div id="banner" class="col-md-10 col-md-offset-1">
 					<img src="img/logo1.png" class="img-responsive center-block" alt="">
-					<p class="col-md-8 col-md-offset-2 ">麦金思青少儿英语（McGins English Education）是由在美国从事TESL教学与研究数年的国内外教育专
+					<!-- <p class="col-md-8 col-md-offset-2 ">麦金思青少儿英语（McGins English Education）是由在美国从事TESL教学与研究数年的国内外教育专
 						家及一线英语教师团队，专为中国青少年儿童打造的英语学习项目，帮助中国孩子实现英语运用能力和应试水平双提
 						升。麦金思旨在把美国的ESL教育理念和方式，转化为适应中国孩子英语学习特点和实际需求的教育模式。美国教育
 						界有学者提出，“若要适应未来国际社会的不确定性挑战、成为世界公民，各国儿童应当从小被有意识地被培养成为
 						‘3IN’人才”。麦金思通过英语引导青少年儿童建立世界观和人生格局，成为未来国际社会需要的独立、国际化、
-					跨文化的“3IN”人才。</p>
+					跨文化的“3IN”人才。</p> -->
+					<p class="col-md-8 col-md-offset-2" ng-bind="'ABOUT_US' | translate"></p>
 				</div>
 			</div>
 		</div>

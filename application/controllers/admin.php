@@ -160,6 +160,7 @@ class Admin extends CI_Controller {
 
     }
 
+
     public function team_mgr()
     {
         $this -> load -> model('team_model');
@@ -173,6 +174,82 @@ class Admin extends CI_Controller {
             $this -> load -> view('admin/team-mgr',$data);
         }
 
+    }
+
+    public function team_update()
+    {
+        $id = $this -> input -> get('team_id');
+        $this -> load -> model('team_model');
+
+        $result = $this -> team_model -> get_by_id($id);
+        //var_dump($result);
+        //die();
+
+        if($result)
+        {
+            $data = array(
+              'team' => $result
+            );
+            $this -> load -> view('admin/update-team',$data);
+        }
+
+    }
+
+    public function update_team()
+    {
+        $id = $this->input -> post('team_id');
+        $name = $this->input -> post('team_name');
+        $desc = $this->input -> post('team_desc');
+        $photo_old_url = $this->input -> post('photo_old_url');
+
+
+
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '3072';
+        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
+
+        //图片上传操作
+        $this -> load -> library('upload', $config);
+        /**
+        $this -> upload -> do_upload('admin_photo');
+        */
+
+        $this -> upload -> do_upload('team_photo');
+       
+        $upload_data = $this -> upload -> data();
+
+
+
+
+        
+
+        if ( $upload_data['file_size'] > 0 ) {
+            //数据库中存photo的路径
+            $photo_url = 'uploads/'.$upload_data['file_name'];
+        }else{
+            //如果不上传图片,则使用默认图片
+            $photo_url = $photo_old_url;
+        }
+
+        // echo $photo_url;
+        // die();
+
+        $this -> load -> model('team_model');
+
+        $row = $this -> team_model -> updata_by_all($id,$name,$desc,$photo_url);
+        
+        if($row>0){
+            redirect('admin/login');
+        }else{
+            echo "<script>alert('未修改！');</script>";
+            //http://localhost/m/
+
+            echo "<script>location.href='team_update?team_id='+$id;</script>";
+            //$this -> load -> view('admin/admin-profile',$data);
+            //$this -> admin_index();
+            //redirect('admin/admin_setting');
+        }
     }
 
     public function job_mgr()
@@ -329,7 +406,7 @@ class Admin extends CI_Controller {
     {
         $job = $this -> input -> post('job');
         $this -> load -> model('job_model');
-        $row = $this -> job_model -> update_job(1);
+        $row = $this -> job_model -> update_job($job);
     }
 
     public function update_contact()

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
 
 	</style>
 </head>
-<body>
+<body ng-controller="myCtrl">
 <!-- 头部 -->
 <?php include 'header.php'; ?>
 <!-- 头部结束 -->
@@ -26,14 +26,15 @@
 	<div class="row">
 		<div id="content" class="col-md-10 col-md-offset-1">
 			<div class="info col-md-6" >
-				<div class="title text-center">联系我们</div>
+				<div class="title text-center" ng-bind="'CONTACTUS' | translate"></div>
 				<ul>
-                    <li><a href="tel:13809764375">电话 Telephone: <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_tel;}?></a></li>
-                    <li><a href="">微信 WeChat: <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_wechat;}?></a></li>
-					<li><a href="mailto:09162839876@qq.com">邮箱 Email: <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_mail;}?></a></li>
-                    <li><a href="www.mcgins.com">网址 Website: <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_website;}?></a></li>
-                    地址：
+                    <li><a href="tel:13809764375">{{'TEL'|translate}}  <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_tel;}?></a></li>
+                    <li><a href="">{{'WEICHAT'|translate}} <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_wechat;}?></a></li>
+					<li><a href="mailto:09162839876@qq.com">{{'EMAIL'|translate}} <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_mail;}?></a></li>
+                    <li><a href="www.mcgins.com">{{'WEBSITE'|translate}} <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_website;}?></a></li>
 					<li>
+					{{'CONTACT'|translate}} 
+					<br>	
 					<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_addr;}?></li>
 				</ul>
 			</div>

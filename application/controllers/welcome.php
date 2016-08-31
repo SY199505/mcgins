@@ -14,6 +14,28 @@ class Welcome extends CI_Controller {
      	$this -> load -> model('contact_model');
 		$this -> load -> model('activity_model');
 		$this -> load -> model('footer_model');
+		$this -> load -> model('i18n_model');
+		$this -> i18n();
+
+	}
+
+
+	public function i18n()
+	{
+
+		$featuresInfo = $this -> i18n_model -> get_all_features();
+		$aboutUsInfo = $this -> i18n_model -> get_aboutUs();
+		//$contactInfo = $this -> i18n_model -> get_all();
+
+		
+
+		$data = array(
+			'features' => $featuresInfo,
+			'aboutUs' => $aboutUsInfo
+		);
+		
+
+		$this -> load -> view('i18n',$data);
 
 	}
 

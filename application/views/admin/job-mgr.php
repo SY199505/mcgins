@@ -42,10 +42,8 @@
           <thead>
           <tr>
             <th>教师福利</th>
-            <th>教师职责</th>
-            <th>教师要求</th>
-            <th>课程顾问职责</th>
-            <th>课程顾问要求</th>
+            <th>操作</th>
+            
           </tr>
           </thead>
           <tbody>
@@ -53,51 +51,19 @@
           foreach($jobInfo as $job){
             ?>
             <tr>
-              <td><?php echo $job -> job_welfare; ?></td>
-              <td><?php echo $job -> job_teacher_recruit; ?></td>
-              <td><?php echo $job -> job_teacher_qualifications; ?></td>
-              <td><?php echo $job -> job_advisor_study; ?></td>
-              <td><?php echo $job -> job_advisor_qualifications; ?></td>
+              <td><?php echo $job -> job_content; ?></td>
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <button class="btn-edit am-btn am-btn-default am-btn-xs am-text-secondary" data-id="<?php echo $job -> job_id ?>"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                  </div>
+                </div>
+              </td>
             </tr>
             <?php
           }
           ?>
             <tr>
-              <td>
-                <div class="am-btn-toolbar">
-                  <div class="am-btn-group am-btn-group-xs">
-                    <button class="btn-edit am-btn am-btn-default am-btn-xs am-text-secondary" data-id="job_welfare"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="am-btn-toolbar">
-                  <div class="am-btn-group am-btn-group-xs">
-                    <button class="btn-edit am-btn am-btn-default am-btn-xs am-text-secondary" data-id="job_teacher_recruit"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="am-btn-toolbar">
-                  <div class="am-btn-group am-btn-group-xs">
-                    <button class="btn-edit am-btn am-btn-default am-btn-xs am-text-secondary" data-id="job_teacher_qualifications"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="am-btn-toolbar">
-                  <div class="am-btn-group am-btn-group-xs">
-                    <button class="btn-edit am-btn am-btn-default am-btn-xs am-text-secondary" data-id="job_advisor_study"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="am-btn-toolbar">
-                  <div class="am-btn-group am-btn-group-xs">
-                    <button class="btn-edit am-btn am-btn-default am-btn-xs am-text-secondary" data-id="job_advisor_qualifications"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                  </div>
-                </div>
-              </td>
             </tr>
           </tbody>
         </table>
@@ -129,8 +95,8 @@
 <script>
     $(function(){
       $('.btn-edit').on('click', function(){
-        var name = $(this).data('id');
-        location.href = "admin/edit_job/"+name;
+        var id = $(this).data('id');
+        location.href = "admin/edit_job/"+id;
       });        
     });
 </script>

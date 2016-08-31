@@ -68,7 +68,7 @@
 				foreach($job as $job){
 			?>
               <div class="am-u-sm-12 am-u-md-12">
-                <textarea id="job" name="job" rows="10" placeholder="请使用富文本编辑插件" style="height: 400px;"><?php echo $job -> $job_name; ?></textarea>
+                <textarea id="job" name="job" rows="10" placeholder="请使用富文本编辑插件" style="height: 400px;"><?php echo $job -> job_content; ?></textarea>
               </div>
 
 			<?php
