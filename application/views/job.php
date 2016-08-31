@@ -28,15 +28,13 @@
 				</p>
 				<div class="detail">
 					我们为您提供：
-					<ul>
 					<?php 
 					foreach($jobInfo as $job){
 					?>
-						<li><?php echo $job -> job_welfare ?></li>
+						<?php echo $job -> job_welfare ?>
 					<?php
 					}
 					?>
-					</ul>
 				</div>
 			</div>
 			<div class="recruit-teacher">

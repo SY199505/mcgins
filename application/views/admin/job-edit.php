@@ -68,7 +68,7 @@
 				foreach($job as $job){
 			?>
               <div class="am-u-sm-12 am-u-md-12">
-                <input type="text" class="am-input-sm" name="<?php echo $job -> $job_name; ?>" value="<?php echo $job -> $job_name; ?>"><br/>
+                <textarea id="job" name="job" rows="10" placeholder="请使用富文本编辑插件" style="height: 400px;"><?php echo $job -> $job_name; ?></textarea>
               </div>
 
 			<?php
@@ -126,6 +126,14 @@
 <script charset="utf-8" src="assets/kindeditor/kindeditor.js"></script>
 <script charset="utf-8" src="assets/kindeditor/lang/zh_CN.js"></script>
 <script>
+  KindEditor.ready(function(K) {
+    window.editor = K.create('#job');
+    var options = {
+      cssPath : '/css/index.css',
+      filterMode : true
+    };
+    var editor = K.create('textarea[name="content"]',options);
+  });
   $('#btn-return').on('click', function(){
     if(confirm('您确定要放弃所有的信息吗？')){
       location.href="admin/job_mgr";

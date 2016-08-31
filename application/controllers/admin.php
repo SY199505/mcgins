@@ -327,16 +327,9 @@ class Admin extends CI_Controller {
 
     public function update_job()
     {
+        $job = $this -> input -> post('job');
         $this -> load -> model('job_model');
-        // foreach($_POST as $key => $value){
-        //     $data = array(
-        //         'job' => $value
-
-        //     )
-        // };
-            var_dump($_POST);
-            die();
-            $row = $this -> job_model -> update_job($_POST);
+        $row = $this -> job_model -> update_job(1);
     }
 
     public function update_contact()

@@ -30,6 +30,9 @@ if(!$adminInfo){
     .hidden{
       display: none;
     }
+    .am-btn-toolbar{
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
