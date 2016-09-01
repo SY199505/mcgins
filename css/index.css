@@ -2,12 +2,13 @@
 #content .feature-first{	
 	background: url(../img/content-first-bg.jpg) no-repeat;
 	background-size: cover;
-	height: 61%;
+	/*height: 61%;*/
 }
 #content .feature-second{	
 	background: url(../img/content-first-bg.jpg) no-repeat;
 	background-size: cover;
-	height: 40%;
+	/*height: 40%;*/
+	padding: 20px;
 }
 #content .title{
 	height: 100px;
@@ -16,7 +17,7 @@
 	margin-top: 5%;
 }
 #content h2{
-	font-size: 15px;
+	font-size: 1.07rem;
 	font-weight: bold;
 }
 #content li p{
@@ -40,7 +41,7 @@
 }
 /*轮播图按钮*/
 #carousel-example-generic .carousel-direction{
-	font-size: 60px;
+	font-size: 4.29rem;
 	position: absolute;
     top: 50%;
     left: 50%;

@@ -79,5 +79,10 @@
 	
  }
 
-
+@media (max-width: 1080px){
+	#banner{
+		margin-top: 0px;
+	}	
+	
+}
 

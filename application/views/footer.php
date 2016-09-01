@@ -58,3 +58,4 @@
         </div>
     </div>
 </footer>
+<div id="power-by"></div>
