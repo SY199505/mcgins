@@ -350,6 +350,7 @@ class Admin extends CI_Controller {
     }
 
     public function edit_job(){
+        
         $this -> load -> model('job_model');
         $job = $this -> job_model -> get_all();
         $this -> load -> view('admin/job-edit', array('job' => $job));

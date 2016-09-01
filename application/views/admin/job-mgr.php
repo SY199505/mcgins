@@ -41,7 +41,8 @@
         <table class="am-table am-table-striped am-table-hover table-main">
           <thead>
           <tr>
-            <th>教师福利</th>
+            <th>标题</th>
+            <th>内容</th>
             <th>操作</th>
             
           </tr>
@@ -51,6 +52,7 @@
           foreach($jobInfo as $job){
             ?>
             <tr>
+              <td><?php echo $job -> job_title; ?></td>
               <td><?php echo $job -> job_content; ?></td>
               <td>
                 <div class="am-btn-toolbar">

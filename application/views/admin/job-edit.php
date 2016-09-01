@@ -68,8 +68,24 @@
 				foreach($job as $job){
 			?>
               <div class="am-u-sm-12 am-u-md-12">
-                <textarea id="job" name="job" rows="10" placeholder="请使用富文本编辑插件" style="height: 400px;"><?php echo $job -> job_content; ?></textarea>
-              </div>
+    <div class="am-g am-margin-top">
+      <div class="am-u-sm-4 am-u-md-2 am-text-right">
+        课程级别
+      </div>
+      <div class="am-u-sm-8 am-u-md-4">
+        <input type="text" class="am-input-sm" name="levels" value="<?php echo $job -> job_title; ?>">
+      </div>
+      <div class="am-hide-sm-only am-u-md-6">*必填，不可重复</div>
+    </div>              
+
+    <div class="am-g am-margin-top-sm">
+      <div class="am-u-sm-12 am-u-md-2 am-text-right admin-form-text">
+        课程介绍
+      </div>
+      <div class="am-u-sm-12 am-u-md-10">
+        <textarea id="job" name="job" rows="10" placeholder="请使用富文本编辑插件" style="height: 400px;"><?php echo $job -> job_content;?></textarea>
+      </div>
+    </div>
 
 			<?php
 				}

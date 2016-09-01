@@ -64,7 +64,7 @@
                         <div class="am-g am-margin-top">
                             <div class="am-u-sm-4 am-u-md-2 am-text-right">描述</div>
                             <div class="am-u-sm-8 am-u-md-4 am-u-end">
-                                <input type="text" id="teamdesc" name="team_desc" value="<?php echo $team -> desc ;?>" >
+                                <!-- <input type="text" id="teamdesc" name="team_desc" value="<?php echo $team -> desc ;?>" > -->
                                 <textarea name="" id="" cols="30" rows="10"><?php echo $team -> desc ;?></textarea>
                                 <a id="tip" class="am-badge am-badge-danger am-square"><span class="am-icon-exclamation-triangle"></span> 当前用户名不可用</a>
                             </div>

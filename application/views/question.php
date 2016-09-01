@@ -10,9 +10,6 @@
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/question.css">
 	</head>
-	<style >
-		
-	</style>
 	<body ng-controller="myCtrl">
 		<!-- 头部 -->
 		<?php include 'header.php'; ?>

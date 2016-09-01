@@ -100,8 +100,6 @@ class Welcome extends CI_Controller {
 			'footerInfo' => $result1,
 			'jobInfo' => $result
 		);			
-    	var_dump($data) ;
-    	die();
 		$this -> load -> view('job', $data);
 
 	}

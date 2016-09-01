@@ -1,15 +1,19 @@
 
-#content .feature{	
-	background: url(../img/content-bg.jpg) no-repeat;
+#content .feature-first{	
+	background: url(../img/content-first-bg.jpg) no-repeat;
 	background-size: cover;
-	height: 100%;
+	height: 61%;
 }
-
+#content .feature-second{	
+	background: url(../img/content-first-bg.jpg) no-repeat;
+	background-size: cover;
+	height: 40%;
+}
 #content .title{
 	height: 100px;
 }
 #content li{
-	margin-top: 2%;
+	margin-top: 5%;
 }
 #content h2{
 	font-size: 15px;
