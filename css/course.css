@@ -6,17 +6,17 @@
 	color: #565668;
 }
 #content .title h1{
-	font-size: 22px;
+	font-size: 1.57rem;
 	font-weight: bolder;
 /*	height: 76px;
 	line-height: 76px;*/
 }
 #content .title span{
-	font-size: 12px;
+	font-size: 0.85rem;
 	font-weight: bold;
 }
 #content .title p{
-	font-size: 16px;
+	font-size: 1.14rem;
 
 }
 #content .title p:last-child{
@@ -30,7 +30,7 @@
 /*表格*/
 #course-plan .title{
 	color: #0262bc ;
-	font-size: 18px;
+	font-size: 1.29rem;
 	font-weight: bold;
 }
 #course-plan table{
@@ -108,4 +108,7 @@
 }
 #course-plan table tbody tr:nth-child(3) td:nth-child(2n+1){
 	background: #ebebeb;
+}
+#main{
+	height: 400px;
 }

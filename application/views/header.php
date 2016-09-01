@@ -14,12 +14,12 @@
 					<span class="icon-bar"></span>
 				</button>
 				<!-- 电话 -->
-				<div id="tel" class="col-md-5 col-sm-4 col-xs-7">
+				<div id="tel" class="col-md-4">
 					<a href="tel:0451-55157643" >咨询电话：0451-55157643</a>
 					
 				</div>
 				<!-- 中英文 -->
-				<div id="change" class="col-md-2 col-sm-3 col-xs-5">
+				<div id="change" class="col-md-3 col-sm-4">
 					<a ng-click="changeLanguage('chn')" href="javascript:;" translate="BUTTON_LANG_CHN">中文</a> |
 					<a ng-click="changeLanguage('en')" href="javascript:;" translate="BUTTON_LANG_EN" >English</a>
 				</div>

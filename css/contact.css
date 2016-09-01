@@ -1,12 +1,13 @@
 #content{
 	margin-top: 140px;
-	height: 460px;
+	height: 100%;
 	background: url(../img/contact.jpg) no-repeat;
 	background-position: 0 30px;
 	color: #fff;
 	padding: 60px 35px;
-	font-size: 16px;
+	font-size: 1.14rem;
 	font-weight: bold;
+	background-size: cover;
 }
 #content .title{
 	height: 100px;
@@ -16,6 +17,5 @@
 	color: #fff;
 }
 #allmap{
-	width: 50%;
 	height: 100%;
 }

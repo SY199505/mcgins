@@ -25,7 +25,7 @@
 <div class="container">
 	<div class="row">
 		<div id="content" class="col-md-10 col-md-offset-1">
-			<div class="info col-md-6" >
+			<div class="info col-md-6 col-xs-12" >
 				<div class="title text-center" ng-bind="'CONTACTUS' | translate"></div>
 				<ul>
                     <li><a href="tel:13809764375">{{'TEL'|translate}}  <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_tel;}?></a></li>
@@ -38,7 +38,7 @@
 					<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_addr;}?></li>
 				</ul>
 			</div>
-			<div id="allmap" class="col-md-6 img-responsive"></div>
+			<div id="allmap" class="col-md-6 col-xs-12 img-responsive"></div>
 		</div>
 	</div>
 </div>
