@@ -95,7 +95,7 @@
 
             <div class="am-g am-margin-top">
               <div class="am-u-sm-4 am-u-md-2 am-text-right">
-                课程配置
+                &nbsp;&nbsp;&nbsp;&nbsp;
               </div>
               <div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
                 <button type="submit" class="am-btn am-btn-primary am-btn-xs">提交保存</button>

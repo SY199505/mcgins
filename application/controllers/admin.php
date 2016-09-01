@@ -7,7 +7,10 @@ class Admin extends CI_Controller {
 		$this -> load -> model('admin_model');
 		$this -> load -> model('course_model');
         $this -> load -> model('team_model');
+        $this -> load -> model('job_model');
         $this -> load -> model('faq_model');
+        $this -> load -> model('contact_model');
+
 	}
 
 	public function pre($data)
@@ -186,7 +189,7 @@ class Admin extends CI_Controller {
         if($result)
         {
             $data = array(
-              'jobInfo' => $result
+              'job' => $result
             );
             $this -> load -> view('admin/job-mgr',$data);
         }
@@ -216,7 +219,7 @@ class Admin extends CI_Controller {
         if($result)
         {
             $data = array(
-              'contactInfo' => $result
+              'contact' => $result
             );
             $this -> load -> view('admin/contact-mgr',$data);
         }
@@ -496,18 +499,46 @@ class Admin extends CI_Controller {
     *   @isliuwei
     *   @16/08/23
     */
-    public function edit_job(){
+    public function add_job()
+    {
+        $this -> load -> view('admin/job-add');
+    }
+    public function edit_job($job_id){
         
-        $this -> load -> model('job_model');
-        $job = $this -> job_model -> get_all();
+        $job = $this -> job_model -> get_by_id($job_id);
         $this -> load -> view('admin/job-edit', array('job' => $job));
     }
 
+    public function save_job()
+    {
+        $title = $this -> input -> post('title');
+        $content = $this -> input -> post('content');
+        $row = $this -> job_model -> save_job($title, $content);
+        if($row > 0){
+            redirect('admin/job_mgr');
+        }
+    }
     public function update_job()
     {
-        $job = $this -> input -> post('job');
+        $id = $this -> input -> post('id');
+        $title = $this -> input -> post('title');
+        $content = $this -> input -> post('content');
         $this -> load -> model('job_model');
-        $row = $this -> job_model -> update_job($job);
+        $row = $this -> job_model -> update_job($id,$title,$content);
+        if($row > 0){
+            redirect('admin/job_mgr');
+        }else{
+            echo '修改问题信息失败!';
+        }
+
+    }
+
+    public function delete_job($id)
+    {
+        $row = $this -> job_model -> delete_job($id);
+        if($row > 0){
+            redirect('admin/job_mgr');
+        }
     }
 
     /**
@@ -516,7 +547,7 @@ class Admin extends CI_Controller {
     *   @isliuwei
     *   @16/08/23
     */
-        public function add_question()
+    public function add_question()
     {
         $this -> load -> view('admin/question-add');
     }
@@ -566,22 +597,41 @@ class Admin extends CI_Controller {
     *   @isliuwei
     *   @16/08/23
     */
+   
     public function update_contact()
     {
-        $this -> load -> model('contact_model');
+        $id = $this -> input -> post('id');
         $tel = $this -> input -> post('tel');
-        $wechat = $this -> input -> post('wechat');
         $mail = $this -> input -> post('mail');
         $website = $this -> input -> post('website');
-        $addr = $this -> input -> post('addr');
         $phone = $this -> input -> post('phone');
-        $row = $this -> contact_model -> update_contact($tel, $wechat, $mail, $website, $addr, $phone);
+        $wechat = $this -> input -> post('wechat');
+        $addr = $this -> input -> post('addr');
+        $row = $this -> contact_model -> update_contact($id, $tel, $mail, $website, $phone, $wechat, $addr);
+        // echo $row;
+        // die();
+
         if($row > 0){
             redirect('admin/contact_mgr');
         }else{
             echo '未修改或修改失败！';
         }   
     }
+    // public function update_contact()
+    // {
+    //     $tel = $this -> input -> post('tel');
+    //     $mail = $this -> input -> post('mail');
+    //     $website = $this -> input -> post('website');
+    //     $phone = $this -> input -> post('phone');
+    //     $wechat = $this -> input -> post('wechat');
+    //     $addr = $this -> input -> post('addr');
+    //     $row = $this -> contact_model -> update_contact($tel, $mail, $website, $phone, $wechat, $addr);
+    //     if($row > 0){
+    //         redirect('admin/contact_mgr');
+    //     }else{
+    //         echo '未修改或修改失败！';
+    //     }   
+    // }
     
         /**
     *   @admin_mgr

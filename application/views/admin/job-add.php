@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>编辑新招聘 - McGins English后台管理</title>
+  <title>添加新招聘 - McGins English后台管理</title>
   <meta name="description" content="这是一个form页面">
   <meta name="keywords" content="form">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,7 +37,7 @@
   <div class="admin-content-body">
     <div class="am-cf am-padding am-padding-bottom-0">
       <div class="am-fl am-cf">
-        <strong class="am-text-primary am-text-lg">编辑新招聘</strong> /
+        <strong class="am-text-primary am-text-lg">添加新招聘</strong> /
         <small>form</small>
       </div>
     </div>
@@ -52,14 +52,13 @@
       <div class="am-tabs-bd">
 
         <div class="am-tab-panel am-fade am-in am-active" id="tab2">
-          <form class="am-form" action="admin/update_job" method="post">
-            <input type="hidden" name="id" value="<?php echo $job -> job_id;?>">
+          <form class="am-form" action="admin/save_job" method="post">
             <div class="am-g am-margin-top">
               <div class="am-u-sm-4 am-u-md-2 am-text-right">
                 标题
               </div>
               <div class="am-u-sm-8 am-u-md-4">
-                <input type="text" class="am-input-sm" name="title" value="<?php echo $job -> job_title ?>">
+                <input type="text" class="am-input-sm" name="title">
               </div>
               <div class="am-hide-sm-only am-u-md-6">*必填，不可重复</div>
             </div>
@@ -69,7 +68,7 @@
                 内容
               </div>
               <div class="am-u-sm-12 am-u-md-10">
-                <textarea id="intro" name="content" rows="10" placeholder="请使用富文本编辑插件" style="height: 400px;"><?php echo $job -> job_content ?></textarea>
+                <textarea id="intro" name="content" rows="10" placeholder="请使用富文本编辑插件" style="height: 400px;"></textarea>
               </div>
             </div>
 
