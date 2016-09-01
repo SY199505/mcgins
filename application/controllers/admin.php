@@ -171,88 +171,12 @@ class Admin extends CI_Controller {
         if($result)
         {
             $data = array(
-              'member' => $result
+              'team' => $result
             );
             $this -> load -> view('admin/team-mgr',$data);
         }
 
-    }
-
-    public function edit_team()
-    {
-        $id = $this -> input -> get('team_id');
-        $this -> load -> model('team_model');
-
-        $result = $this -> team_model -> get_by_id($id);
-        //var_dump($result);
-        //die();
-
-        if($result)
-        {
-            $data = array(
-              'team' => $result
-            );
-            $this -> load -> view('admin/update-team',$data);
-        }
-
-    }
-
-    public function update_team()
-    {
-        $id = $this->input -> post('team_id');
-        $name = $this->input -> post('team_name');
-        $desc = $this->input -> post('team_desc');
-        $photo_old_url = $this->input -> post('photo_old_url');
-
-
-
-        $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '3072';
-        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
-
-        //图片上传操作
-        $this -> load -> library('upload', $config);
-        /**
-        $this -> upload -> do_upload('admin_photo');
-        */
-
-        $this -> upload -> do_upload('team_photo');
-       
-        $upload_data = $this -> upload -> data();
-
-
-
-
-        
-
-        if ( $upload_data['file_size'] > 0 ) {
-            //数据库中存photo的路径
-            $photo_url = 'uploads/'.$upload_data['file_name'];
-        }else{
-            //如果不上传图片,则使用默认图片
-            $photo_url = $photo_old_url;
-        }
-
-        // echo $photo_url;
-        // die();
-
-        $this -> load -> model('team_model');
-
-        $row = $this -> team_model -> updata_by_all($id,$name,$desc,$photo_url);
-        
-        if($row>0){
-            redirect('admin/login');
-        }else{
-            echo "<script>alert('未修改！');</script>";
-            //http://localhost/m/
-
-            echo "<script>location.href='team_update?team_id='+$id;</script>";
-            //$this -> load -> view('admin/admin-profile',$data);
-            //$this -> admin_index();
-            //redirect('admin/admin_setting');
-        }
-    }
+    }  
 
     public function job_mgr()
     {
@@ -316,154 +240,16 @@ class Admin extends CI_Controller {
 
 
 
-
-
-
-
-
     /**
-    *   @add_admin
-    *   @admin用户新增
+    *   @admin_mgr
+    *   @admin用户列表页面
     *   @isliuwei
     *   @16/08/23
     */
-
     public function add_admin()
     {
         $this -> load -> view('admin/admin-add');
     }
-
-    /**
-     *   @add_course
-     *   @新增课程
-     *   @isliuwei
-     *   @16/08/23
-     */
-
-    public function add_course()
-    {
-        $this -> load -> view('admin/course-add');
-    }
-        public function add_team()
-    {
-        $this -> load -> view('admin/team-add');
-    }
-
-
-    public function edit_course($course_id)
-    {
-        $course = $this -> course_model -> get_by_id($course_id);
-        $this -> load -> view('admin/course-edit', array('course' => $course));
-    }
-
-    public function edit_job(){
-        
-        $this -> load -> model('job_model');
-        $job = $this -> job_model -> get_all();
-        $this -> load -> view('admin/job-edit', array('job' => $job));
-    }
-
-    public function edit_news($news_id)
-    {
-        $this -> load -> model('activity_model');
-        $news = $this -> activity_model -> get_by_id($news_id);
-        $this -> load -> view('admin/news-edit', array('news' => $news));
-    }
-    /**
-     *   @save_course
-     *   @保存课程信息
-     *   @isliuwei
-     *   @16/08/23
-     */
-
-    public function save_course()
-    {
-        $levels = $this -> input -> post('levels');
-        $age = $this -> input -> post('age');
-        $courses = $this -> input -> post('courses');
-        $intro = $this -> input -> post('intro');
-        $row = $this -> course_model -> save_course($levels, $age, $courses, $intro);
-        if($row > 0){
-            redirect('admin/course_mgr');
-        }
-    }
-
-    /**
-     *   @save_course
-     *   @保存课程信息
-     *   @isliuwei
-     *   @16/08/23
-     */
-
-    public function update_course()
-    {
-        $course_id = $this -> input -> post('course_id');
-        $levels = $this -> input -> post('levels');
-        $age = $this -> input -> post('age');
-        $courses = $this -> input -> post('courses');
-        $intro = $this -> input -> post('intro');
-        $row = $this -> course_model -> update_course($course_id, $levels, $age, $courses, $intro);
-        if($row > 0){
-            redirect('admin/course_mgr');
-        }else{
-            echo '修改课程信息失败!';
-        }
-    }
-
-    public function update_job()
-    {
-        $job = $this -> input -> post('job');
-        $this -> load -> model('job_model');
-        $row = $this -> job_model -> update_job($job);
-    }
-
-    public function update_contact()
-    {
-        $this -> load -> model('contact_model');
-        $tel = $this -> input -> post('tel');
-        $wechat = $this -> input -> post('wechat');
-        $mail = $this -> input -> post('mail');
-        $website = $this -> input -> post('website');
-        $addr = $this -> input -> post('addr');
-        $phone = $this -> input -> post('phone');
-        $row = $this -> contact_model -> update_contact($tel, $wechat, $mail, $website, $addr, $phone);
-        if($row > 0){
-            redirect('admin/contact_mgr');
-        }else{
-            echo '未修改或修改失败！';
-        }   
-    }
-
-    public function update_news()
-    {
-        $this -> load -> model('activity_model');
-        $activity_id = $this -> input -> post('activity_id');
-        $activity_title = $this -> input -> post('activity_title');
-        $activity_desc = $this -> input -> post('activity_desc');
-        $activity_content = $this -> input -> post('activity_content');
-        $row = $this -> activity_model -> update_news($activity_id, $activity_title, $activity_desc, $activity_content);
-        if($row >0){
-            redirect('admin/news_mgr');
-        }else{
-            echo '未修改或修改失败！';
-        }
-    }
-
-    public function delete_course($course_id)
-    {
-        $row = $this -> course_model -> delete_course($course_id);
-        if($row > 0){
-            redirect('admin/course_mgr');
-        }
-    }
-
-    /**
-    *   @check_username
-    *   @ajax检查用户名是否重复
-    *   @isliuwei
-    *   @16/08/23
-    */
-
     public function check_username()
     {
         $admin_username = $this -> input -> get('admin_username');
@@ -523,8 +309,214 @@ class Admin extends CI_Controller {
 
     }
 
+    /**
+    *   @admin_mgr
+    *   @admin
+    *   课程列表页面
+    *   @isliuwei
+    *   @16/08/23
+    */
+    public function add_course()
+    {
+        $this -> load -> view('admin/course-add');
+    }
 
-public function add_question()
+     public function edit_course($course_id)
+    {
+        $course = $this -> course_model -> get_by_id($course_id);
+        $this -> load -> view('admin/course-edit', array('course' => $course));
+    }
+    public function save_course()
+    {
+        $levels = $this -> input -> post('levels');
+        $age = $this -> input -> post('age');
+        $courses = $this -> input -> post('courses');
+        $intro = $this -> input -> post('intro');
+        $row = $this -> course_model -> save_course($levels, $age, $courses, $intro);
+        if($row > 0){
+            redirect('admin/course_mgr');
+        }
+    }
+
+     public function update_course()
+    {
+        $course_id = $this -> input -> post('course_id');
+        $levels = $this -> input -> post('levels');
+        $age = $this -> input -> post('age');
+        $courses = $this -> input -> post('courses');
+        $intro = $this -> input -> post('intro');
+        $row = $this -> course_model -> update_course($course_id, $levels, $age, $courses, $intro);
+        if($row > 0){
+            redirect('admin/course_mgr');
+        }else{
+            echo '修改课程信息失败!';
+        }
+    }
+
+     public function delete_course($course_id)
+    {
+        $row = $this -> course_model -> delete_course($course_id);
+        if($row > 0){
+            redirect('admin/course_mgr');
+        }
+    }
+
+
+    /**
+    *   @admin_mgr
+    *   @admin团队列表页面
+    *   @isliuwei
+    *   @16/08/23
+    */
+    public function add_team()
+    {
+        $this -> load -> view('admin/team-add');
+    }
+
+    public function edit_team()
+    {
+        $id = $this -> input -> get('team_id');
+        $this -> load -> model('team_model');
+
+        $result = $this -> team_model -> get_by_id($id);
+        //var_dump($result);
+        //die();
+
+        if($result)
+        {
+            $data = array(
+              'team' => $result
+            );
+            $this -> load -> view('admin/update-team',$data);
+        }
+
+    }
+
+    public function save_team()
+    {
+        $type = $this -> input -> post('team_type');
+        $name = $this -> input -> post('team_name');
+        $desc = $this -> input -> post('team_desc');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '3072';
+        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
+
+        //图片上传操作
+        $this -> load -> library('upload', $config);
+        /**
+        $this -> upload -> do_upload('admin_photo');
+        */
+
+        $this -> upload -> do_upload('team_photo');
+       
+        $upload_data = $this -> upload -> data();
+
+        $photo_url = 'uploads/'.$upload_data[file_name];
+
+
+
+        $row = $this -> team_model -> save_team($type, $name, $photo_url, $desc);
+        if($row > 0){
+            redirect('admin/team_mgr');
+        }
+    }
+
+    public function update_team()
+    {
+        $id = $this->input -> post('team_id');
+        $name = $this->input -> post('team_name');
+        $type = $this -> input -> post('team_type');
+        $desc = $this->input -> post('team_desc');
+        $photo_old_url = $this->input -> post('photo_old_url');
+
+
+
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '3072';
+        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
+
+        //图片上传操作
+        $this -> load -> library('upload', $config);
+        /**
+        $this -> upload -> do_upload('admin_photo');
+        */
+
+        $this -> upload -> do_upload('team_photo');
+       
+        $upload_data = $this -> upload -> data();
+
+
+
+
+        
+
+        if ( $upload_data['file_size'] > 0 ) {
+            //数据库中存photo的路径
+            $photo_url = 'uploads/'.$upload_data['file_name'];
+        }else{
+            //如果不上传图片,则使用默认图片
+            $photo_url = $photo_old_url;
+        }
+
+        // echo $photo_url;
+        // die();
+
+        $this -> load -> model('team_model');
+
+        $row = $this -> team_model -> updata_by_all($id,$name,$desc,$photo_url);
+        
+        if($row>0){
+            redirect('admin/team_mgr');
+        }else{
+            echo "<script>alert('未修改！');</script>";
+            //http://localhost/m/
+
+            echo "<script>location.href='team_update?team_id='+$id;</script>";
+            //$this -> load -> view('admin/admin-profile',$data);
+            //$this -> admin_index();
+            //redirect('admin/admin_setting');
+        }
+    }
+
+    public function delete_team()
+    {
+        $id = $this -> input -> get('team_id');
+        $row = $this -> team_model -> delete_team($id);
+        if($row > 0){
+            redirect('admin/team_mgr');
+        }
+    }
+
+   
+    /**
+    *   @admin_mgr
+    *   @admin招聘列表页面
+    *   @isliuwei
+    *   @16/08/23
+    */
+    public function edit_job(){
+        
+        $this -> load -> model('job_model');
+        $job = $this -> job_model -> get_all();
+        $this -> load -> view('admin/job-edit', array('job' => $job));
+    }
+
+    public function update_job()
+    {
+        $job = $this -> input -> post('job');
+        $this -> load -> model('job_model');
+        $row = $this -> job_model -> update_job($job);
+    }
+
+    /**
+    *   @admin_mgr
+    *   @admin问题列表页面
+    *   @isliuwei
+    *   @16/08/23
+    */
+        public function add_question()
     {
         $this -> load -> view('admin/question-add');
     }
@@ -568,6 +560,59 @@ public function add_question()
             redirect('admin/question_mgr');
         }
     }
+    /**
+    *   @admin_mgr
+    *   @admin联系列表页面
+    *   @isliuwei
+    *   @16/08/23
+    */
+    public function update_contact()
+    {
+        $this -> load -> model('contact_model');
+        $tel = $this -> input -> post('tel');
+        $wechat = $this -> input -> post('wechat');
+        $mail = $this -> input -> post('mail');
+        $website = $this -> input -> post('website');
+        $addr = $this -> input -> post('addr');
+        $phone = $this -> input -> post('phone');
+        $row = $this -> contact_model -> update_contact($tel, $wechat, $mail, $website, $addr, $phone);
+        if($row > 0){
+            redirect('admin/contact_mgr');
+        }else{
+            echo '未修改或修改失败！';
+        }   
+    }
+    
+        /**
+    *   @admin_mgr
+    *   @admin活动列表页面
+    *   @isliuwei
+    *   @16/08/23
+    */
+   
+    public function edit_news($news_id)
+    {
+        $this -> load -> model('activity_model');
+        $news = $this -> activity_model -> get_by_id($news_id);
+        $this -> load -> view('admin/news-edit', array('news' => $news));
+    }
+
+    public function update_news()
+    {
+        $this -> load -> model('activity_model');
+        $activity_id = $this -> input -> post('activity_id');
+        $activity_title = $this -> input -> post('activity_title');
+        $activity_desc = $this -> input -> post('activity_desc');
+        $activity_content = $this -> input -> post('activity_content');
+        $row = $this -> activity_model -> update_news($activity_id, $activity_title, $activity_desc, $activity_content);
+        if($row >0){
+            redirect('admin/news_mgr');
+        }else{
+            echo '未修改或修改失败！';
+        }
+    }
+
+
 
 
 

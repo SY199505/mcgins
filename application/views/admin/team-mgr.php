@@ -29,6 +29,9 @@ redirect('admin/login');
     .hidden{
     display: none;
     }
+    .add{
+      margin-top: 20px;
+    }
     </style>
   </head>
   <body>
@@ -44,7 +47,7 @@ redirect('admin/login');
       <div class="am-cf am-padding">
         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户列表界面</strong> | <a class="am-badge am-badge-success am-square">Admin List</a></div>
       </div>
-      <div class="am-g">
+      <div class="am-g add">
         <div class="am-u-sm-12 am-u-md-6">
           <div class="am-btn-toolbar">
             <div class="am-btn-group am-btn-group-xs">
@@ -68,21 +71,21 @@ redirect('admin/login');
             </thead>
             <tbody>
               <?php
-              foreach($member as $member){
+              foreach($team as $team){
               ?>
               <tr>
-                <td><?php echo $member -> id; ?></td>
-                <td><?php echo $member -> type; ?></td>
-                <td><?php echo $member -> name; ?></td>
-                <td><img src="uploads/<?php echo $member -> img; ?>" width="90px" height="120px" alt="" /></td>
-                <td><?php echo $member -> desc; ?></td>
+                <td><?php echo $team -> id; ?></td>
+                <td><?php echo $team -> type; ?></td>
+                <td><?php echo $team -> name; ?></td>
+                <td><img src="<?php echo $team -> img; ?>" width="90px" height="120px" alt="" /></td>
+                <td><?php echo $team -> desc; ?></td>
                 <td>
                   <div class="am-btn-toolbar">
                     <div class="am-btn-group am-btn-group-xs">
                       <button class="am-btn am-btn-default am-btn-xs am-text-secondary">
                       
-                      <span class="am-icon-pencil-square-o"></span><a href="admin/edit_team?team_id=<?php echo $member -> id; ?>" > 编辑</button>
-                      <button class="btn-delete am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" data-id="<?php echo $member -> id; ?>" style=" margin-left:0px;"><span class="am-icon-trash-o" style="width:12px;"></span> 删除</button>
+                      <span class="am-icon-pencil-square-o"></span><a href="admin/edit_team?team_id=<?php echo $team -> id; ?>" > 编辑</button>
+                      <button class="btn-delete am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" style=" margin-left:0px;"><a class="am-text-danger" href="admin/delete_team?team_id=<?php echo $team -> id; ?>" ><span class="am-icon-trash-o" style="width:12px;"></span>  删除</button>
                     </div>
                   </div>
                 </td>

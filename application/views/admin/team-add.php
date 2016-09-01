@@ -41,7 +41,7 @@
     <!-- content start -->
     <div class="admin-content">
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">管理员信息更新界面</strong> | <small><a class="am-badge am-badge-success am-square">Update Admin</a></small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">管理员信息添加界面</strong> | <small><a class="am-badge am-badge-success am-square">Update Admin</a></small></div>
         </div>
 
         <div class="am-tabs am-margin" data-am-tabs>
@@ -51,12 +51,20 @@
 
             <div class="am-tabs-bd">
                 <div class="am-tab-panel am-fade am-in am-active" id="tab1">
-                    <form action="admin/update_team" method="post" class="am-form am-form-inline" enctype="multipart/form-data">
-                        <input type="hidden" name="team_id" value="<?php echo $team -> id ;?>">
+                    <form action="admin/save_team" method="post" class="am-form am-form-inline" enctype="multipart/form-data">
+                        <input type="hidden" name="team_id">
                         <div class="am-g am-margin-top">
                             <div class="am-u-sm-4 am-u-md-2 am-text-right">姓名</div>
                             <div class="am-u-sm-8 am-u-md-4 am-u-end">
-                                <input type="text" id="teamname" name="team_name" value="<?php echo $team -> name ;?>" >
+                                <input type="text" id="teamname" name="team_name" >
+                                <a id="tip" class="am-badge am-badge-danger am-square"><span class="am-icon-exclamation-triangle"></span> 当前用户名不可用</a>
+                            </div>
+                        </div>
+
+                        <div class="am-g am-margin-top">
+                            <div class="am-u-sm-4 am-u-md-2 am-text-right">职务</div>
+                            <div class="am-u-sm-8 am-u-md-4 am-u-end">
+                                <input type="text" id="teamname" name="team_type" >
                                 <a id="tip" class="am-badge am-badge-danger am-square"><span class="am-icon-exclamation-triangle"></span> 当前用户名不可用</a>
                             </div>
                         </div>
@@ -64,19 +72,12 @@
                         <div class="am-g am-margin-top">
                             <div class="am-u-sm-4 am-u-md-2 am-text-right">描述</div>
                             <div class="am-u-sm-8 am-u-md-4 am-u-end">
-                                <input type="text" id="teamdesc" name="team_desc" value="<?php echo $team -> desc ;?>" >
-                                <textarea name="" id="" cols="30" rows="10"><?php echo $team -> desc ;?></textarea>
+                                <textarea name="team_desc" id="" cols="30" rows="10"></textarea>
                                 <a id="tip" class="am-badge am-badge-danger am-square"><span class="am-icon-exclamation-triangle"></span> 当前用户名不可用</a>
                             </div>
                         </div>
 
-                        <div class="am-g am-margin-top">
-                            <div class="am-u-sm-4 am-u-md-2 am-text-right">当前头像</div>
-                            <div class="am-u-sm-8 am-u-md-4 am-u-end">
-                                <input type="hidden" name="photo_old_url" value="<?php echo $team -> img ;?>">
-                                <img src="<?php echo $team -> img ;?>" style="width: 30%; height: 20%; cursor: pointer;" alt="当前用户头像缩略图" title="" data-am-popover="{content: '当前用户头像缩略图', trigger: 'hover focus'}"/>
-                            </div>
-                        </div>
+                       
 
                         <div class="am-g am-margin-top">
                             <div class="am-u-sm-4 am-u-md-2 am-text-right">更改头像</div>

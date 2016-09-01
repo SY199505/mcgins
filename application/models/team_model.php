@@ -21,6 +21,16 @@ class Team_model extends CI_Model {
     	 return $query -> row() ;
     }
 
+    public function save_team($type, $name, $photo_url, $desc){
+        $this -> db -> insert('t_team', array(
+            'type' => $type,
+            'name' => $name,
+            'img' => $img,
+            'desc' => $desc
+        ));
+        return $this -> db -> affected_rows();
+    }
+
     public function updata_by_all($id,$name,$desc,$photo_url)
     {
     	$data = array(
@@ -34,7 +44,13 @@ class Team_model extends CI_Model {
         $row = $this -> db -> affected_rows();
         return $row;
 
+    }
 
+
+    public function delete_team($id)
+    {
+        $this->db->delete('t_team', array('id' => $id));
+        return $this -> db -> affected_rows();
 
     }
     
