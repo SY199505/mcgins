@@ -33,13 +33,13 @@
   <div class="admin-content">
     <div class="admin-content-body">
       <div class="am-cf am-padding">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong></div>
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">新闻列表界面</strong> | <a class="am-badge am-badge-success am-square">News List</a></div>
       </div>
     <div class="am-g">
       <div class="am-u-sm-12 am-u-md-6">
         <div class="am-btn-toolbar">
           <div class="am-btn-group am-btn-group-xs">
-            <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span><a href="admin/add_course"> 新增</a></button>
+            <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span><a href="admin/add_news"> 新增</a></button>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@
         <table class="am-table am-table-striped am-table-hover table-main">
           <thead>
           <tr>
-            <th>序号</th>
+            <th>新闻主图</th>
             <th>新闻标题</th>
             <th>新闻内容</th>
             <th>操作</th>
@@ -61,14 +61,14 @@
           foreach($activityInfo as $activity){
             ?>
             <tr>
-              <td><img src="img/<?php  echo $activity -> activity_img;?>" alt=""></td>
+              <td><img style="width:40%;height:40%;" src="<?php  echo $activity -> activity_img;?>" alt=""></td>
               <td><?php echo $activity -> activity_title; ?></td>
-              <td><?php echo $activity -> activity_desc; ?></td>
+              <td><?php echo mb_substr($activity -> activity_content, 0,30)."......"; ?></td>
               <td>
                 <div class="am-btn-toolbar">
                   <div class="am-btn-group am-btn-group-xs">
-                    <button class="btn-edit am-btn am-btn-default am-btn-xs am-text-secondary" data-id="<?php echo $activity -> activity_id;?>"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                    <button class="btn-delete am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" data-id="<?php echo $activity -> activity_id;?>">><span class="am-icon-trash-o"></span> 删除</button>
+                    <button class="btn-edit am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span><a href="admin/news_setting?news_id=<?php echo $activity -> activity_id;?>"> 编辑</a></button>
+                    <button class="btn-delete am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" data-id="<?php echo $activity -> activity_id;?>"><span class="am-icon-trash-o"></span> 删除</button>
                   </div>
                 </div>
               </td>
@@ -78,7 +78,12 @@
           ?>
           </tbody>
         </table>
+        <ul id="page" class="am-pagination am-fr admin-content-pagination">
+          <?php echo $this->pagination->create_links();?>
+        </ul>
       </div>
+
+        
 
     </div>
       
@@ -107,10 +112,7 @@
 </body>
 <script>
   $(function(){
-    $('.btn-edit').on('click', function(){
-      var id = $(this).data('id');
-      location.href="admin/edit_news/"+id;
-    });
+    
     $('.btn-delete').on('click', function(){
       var id = $(this).data('id');
       if(   confirm('您确定要删除这条信息吗？')   ){

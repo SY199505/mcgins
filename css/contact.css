@@ -19,3 +19,13 @@
 #allmap{
 	height: 100%;
 }
+
+
+
+@media all and (max-width: 768px) {
+
+	#content{
+		margin-top: 55px;
+	}
+	
+}

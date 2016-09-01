@@ -6,14 +6,12 @@
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
 	<title>联系我们</title>
 	<base href="<?php echo site_url();?>">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/contact.css">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link rel="stylesheet" href="css/font-awesome.min.css" />
-	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5dEsfUlwMV0GdHlxoqgvlxE0"></script> 
+	<link rel="stylesheet" href="css/contact.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+	
 	<style>
 
 	</style>

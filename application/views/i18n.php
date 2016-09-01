@@ -1,4 +1,6 @@
 
+<base href="<?php echo site_url();?>">
+<script src="js/angular-1.5.5.js"></script>
 
 <script>
 

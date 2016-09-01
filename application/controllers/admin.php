@@ -10,6 +10,7 @@ class Admin extends CI_Controller {
         $this -> load -> model('job_model');
         $this -> load -> model('faq_model');
         $this -> load -> model('contact_model');
+        $this -> load -> model('activity_model');
 
 	}
 
@@ -226,20 +227,7 @@ class Admin extends CI_Controller {
 
     }
 
-    public function news_mgr()
-    {
-        $this -> load -> model('activity_model');
-        $result = $this -> activity_model -> get_all();
-
-        if($result)
-        {
-            $data = array(
-              'activityInfo' => $result
-            );
-            $this -> load -> view('admin/news-mgr',$data);
-        }
-
-    }
+    
 
 
 
@@ -640,27 +628,180 @@ class Admin extends CI_Controller {
     *   @16/08/23
     */
    
-    public function edit_news($news_id)
+    // public function edit_news($news_id)
+    // {
+    //     $this -> load -> model('activity_model');
+    //     $news = $this -> activity_model -> get_by_id($news_id);
+    //     $this -> load -> view('admin/news-edit', array('news' => $news));
+    // }
+
+    // public function update_news()
+    // {
+    //     $this -> load -> model('activity_model');
+    //     $activity_id = $this -> input -> post('activity_id');
+    //     $activity_title = $this -> input -> post('activity_title');
+    //     $activity_desc = $this -> input -> post('activity_desc');
+    //     $activity_content = $this -> input -> post('activity_content');
+    //     $row = $this -> activity_model -> update_news($activity_id, $activity_title, $activity_desc, $activity_content);
+    //     if($row >0){
+    //         redirect('admin/news_mgr');
+    //     }else{
+    //         echo '未修改或修改失败！';
+    //     }
+    // }
+
+
+    public function news_mgr()
     {
-        $this -> load -> model('activity_model');
-        $news = $this -> activity_model -> get_by_id($news_id);
-        $this -> load -> view('admin/news-edit', array('news' => $news));
+        
+        
+        $news_count = $this -> activity_model -> get_news_count();
+        $offset = $this -> uri -> segment(3)==NULL?0 : $this -> uri -> segment(3);
+
+        //分页
+        $this->load->library('pagination');
+        $config['base_url'] = 'admin/news_mgr';
+        $config['total_rows'] = $news_count;
+        $config['per_page'] = 5; 
+
+        $config['last_link'] = FALSE;
+        $config['prev_link'] = '«';//上一页
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '»';//下一页
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['num_tag_open'] = '<li>';//每个数字页
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="am-active"><a href="'.$config['base_url'].'">';//当前页
+        $config['cur_tag_close'] = '</a></li>';
+
+
+        $this->pagination->initialize($config); 
+
+        $result = $this -> activity_model -> get_news_by_page($config['per_page'],$offset);
+
+        if($result)
+        {
+            $data = array(
+              'activityInfo' => $result
+            );
+            $this -> load -> view('admin/news-mgr',$data);
+        }
+
+
+
     }
+
+    public function add_news()
+    {
+        $this -> load -> view('admin/add-news');
+    }
+
+    public function save_news()
+    {
+        $title = $this -> input -> post('news_title');
+        $content = $this -> input -> post('news_content');
+        
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '3072';
+        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
+        $this -> load -> library('upload', $config);
+        $this -> upload -> do_upload('news_photo');
+        $upload_data = $this -> upload -> data();
+        $photo_url = 'uploads/'.$upload_data['file_name'];
+
+        $row = $this -> activity_model -> save_news_by_all($title,$content,$photo_url);
+        if( $row > 0)
+        {
+            redirect('admin/news_mgr');
+        }else{
+            redirect('admin/save_news');
+        }
+
+
+
+
+    }
+
+    public function delete_news()
+    {
+        $id = $this -> uri -> segment(3);
+        $row = $this -> activity_model -> delete_by_id($id);
+        if($row > 0)
+        {
+            redirect('admin/news_mgr');
+        }
+    }
+
+    public function news_setting()
+    {
+        $id = $this -> input -> get('news_id');
+        $row = $this -> activity_model -> get_by_id($id);
+
+        if($row)
+        {
+            $data = array(
+                'news' => $row
+            );
+
+            $this -> load -> view('admin/news-update',$data);
+        }
+    }
+
 
     public function update_news()
     {
-        $this -> load -> model('activity_model');
-        $activity_id = $this -> input -> post('activity_id');
-        $activity_title = $this -> input -> post('activity_title');
-        $activity_desc = $this -> input -> post('activity_desc');
-        $activity_content = $this -> input -> post('activity_content');
-        $row = $this -> activity_model -> update_news($activity_id, $activity_title, $activity_desc, $activity_content);
-        if($row >0){
+        $id = $this -> input -> post('news_id');
+        $title = $this -> input -> post('news_title');
+        $content = $this -> input -> post('news_content');
+        $photo_old_url = $this -> input -> post('photo_old_url');
+        
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '3072';
+        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
+        $this -> load -> library('upload', $config);
+        $this -> upload -> do_upload('news_photo');
+        $upload_data = $this -> upload -> data();
+        $photo_url = 'uploads/'.$upload_data['file_name'];
+
+
+
+        if ( $upload_data['file_size'] > 0 ) {
+            //数据库中存photo的路径
+            $photo_url = 'uploads/'.$upload_data['file_name'];
+        }else{
+            //如果不上传图片,则使用默认图片
+            $photo_url = $photo_old_url;
+        }
+
+        $row = $this -> activity_model -> update_news_by_all($id,$title,$content,$photo_url);
+        if( $row > 0)
+        {
             redirect('admin/news_mgr');
         }else{
-            echo '未修改或修改失败！';
+            echo "<script>location.href='news_setting?news_id='+$id;</script>";
         }
+
     }
+
+
+    // public function news_mgr()
+    // {
+    //     $this -> load -> model('activity_model');
+    //     $result = $this -> activity_model -> get_all();
+
+    //     if($result)
+    //     {
+    //         $data = array(
+    //           'activityInfo' => $result
+    //         );
+    //         $this -> load -> view('admin/news-mgr',$data);
+    //     }
+
+    // }
 
 
 
@@ -672,142 +813,7 @@ class Admin extends CI_Controller {
 
 	
 
- //    public function add_admin()
- //    {
- //        $this -> load -> view('admin/admin-add');
- //    }
-
- //    public function save_admin()
- //    {
- //    	$admin_username = $this -> input -> post('admin_username');
- //    	$admin_password = $this -> input -> post('admin_password');
-
-
- //    	$config['upload_path'] = './uploads/';
- //        $config['allowed_types'] = 'gif|jpg|png';
- //        $config['max_size'] = '3072';
- //        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
-
- //        //图片上传操作
- //        $this -> load -> library('upload', $config);
- //        $this -> upload -> do_upload('admin_photo');
- //        $upload_data = $this -> upload -> data();
-
- //        if ( $upload_data['file_size'] > 0 ) {
- //            //数据库中存photo的路径
- //            $photo_url = 'uploads/'.$upload_data['file_name'];
- //        }else{
- //            //如果不上传图片,则使用默认图片
- //            $photo_url = 'img/avatar.png';
- //        }
-
- //        $rows = $this -> admin_model -> save_admin_by_name_pwd_photo($admin_username,$admin_password, $photo_url);
- //        if($rows > 0)
- //        {
- //        	$data = array(
-	// 			'info'=>'注册成功',
-	// 			'url' => 'admin/admin_mgr'
-	// 		);
-	// 		$this -> load -> view('redirect-null',$data);
- //        }
- //        else
- //        {
-
- //        }
-
-
- //    }
-
- //    public function check_username()
- //    {
- //    	$admin_username = $this -> input -> get('admin_username');
-
-
- //        $result = $this -> admin_model -> get_by_username($admin_username);
-
-        
-        
- //        if($result)
- //        {
- //            echo 'success';
- //        }
- //        else
- //        {
- //            echo 'fail';
- //        }
- //    }
-
- //    public function admin_setting()
- //    {
- //    	$admin_id = $this -> input -> get('admin_id');
- //    	$row = $this -> admin_model -> get_admin_by_id($admin_id);
-
- //    	if($row)
- //    	{
-
- //    		$data = array(
- //    			'admin' => $row
- //    		);
- //    		$this -> load -> view('admin/admin-profile',$data);
-
- //    	}
-    	
- //    }
-
- //    public function upload($filename,$default)
- //    {
-
- //    	$config['upload_path'] = './uploads/';
- //        $config['allowed_types'] = 'gif|jpg|png';
- //        $config['max_size'] = '3072';
- //        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
-
- //        $this -> load -> library('upload', $config);
- //        $this -> upload -> do_upload($filename);
- //        $upload_data = $this -> upload -> data();
-
- //        if ( $upload_data['file_size'] > 0 ) 
- //        {
- //            $photo_url = 'uploads/'.$upload_data['file_name'];
- //        }
- //        else
- //        {
- //            $photo_url = $default;
- //        }
-
- //        return $photo_url;
-
- //    }
-
- //    public function updata_admin()
- //    {
- //    	$admin_id = $this -> input -> post('admin_id');
- //        $admin_username = $this -> input -> post('admin_username');
- //        $admin_password = $this -> input -> post('admin_password');
- //        $photo_old_url = $this -> input -> post('photo_old_url');
- //        $this -> upload('admin_photo',$photo_old_url);
- //        $url = $this -> upload('admin_photo',$photo_old_url);
-       
-        
- //        $row = $this -> admin_model -> updata_admin($admin_id,$admin_username,$admin_password,$url);
-
- //        if( $row == 0 )
- //        {
- //        	echo "<script>alert('未修改任何信息！')</script>";
-	// 		echo "<script>location.href='admin_setting?admin_id='+$admin_id;</script>";
- //        }
- //        else
- //        {
- //        	$data = array(
-	// 			'info'=>'信息更新成功！',
-	// 			'tip' => '请重新登录！',
-	// 			'page' => '登录页面',
-	// 			'url' => 'admin/login'
-	// 		);
-	// 		$this -> load -> view('redirect-null',$data);
- //        }
-       
- //    }
+ 
 
 
 
