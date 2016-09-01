@@ -33,6 +33,9 @@ if(!$adminInfo){
     .am-btn-toolbar{
       margin-top: 10px;
     }
+    .add{
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -53,7 +56,7 @@ if(!$adminInfo){
       <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">课程列表界面</strong> | <a class="am-badge am-badge-success am-square">Admin List</a></div>
     </div>
 
-    <div class="am-g">
+    <div class="am-g add">
       <div class="am-u-sm-12 am-u-md-6">
         <div class="am-btn-toolbar">
           <div class="am-btn-group am-btn-group-xs">
