@@ -6,6 +6,8 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this -> load -> model('admin_model');
 		$this -> load -> model('course_model');
+        $this -> load -> model('team_model');
+        $this -> load -> model('faq_model');
 	}
 
 	public function pre($data)
@@ -176,7 +178,7 @@ class Admin extends CI_Controller {
 
     }
 
-    public function team_update()
+    public function edit_team()
     {
         $id = $this -> input -> get('team_id');
         $this -> load -> model('team_model');
@@ -342,6 +344,11 @@ class Admin extends CI_Controller {
     {
         $this -> load -> view('admin/course-add');
     }
+        public function add_team()
+    {
+        $this -> load -> view('admin/team-add');
+    }
+
 
     public function edit_course($course_id)
     {
@@ -515,6 +522,53 @@ class Admin extends CI_Controller {
         }
 
     }
+
+
+public function add_question()
+    {
+        $this -> load -> view('admin/question-add');
+    }
+
+    public function edit_question($FAQ_id)
+    {
+        $question = $this -> faq_model -> get_by_id($FAQ_id);
+        $this -> load -> view('admin/question-edit', array('faq' => $question));
+    }
+
+    public function save_question()
+    {
+        $FAQ_title = $this -> input -> post('FAQ_title');
+        $FAQ_content = $this -> input -> post('FAQ_content');
+        $row = $this -> faq_model -> save_question($FAQ_title, $FAQ_content);
+        // echo $row;
+        // die();
+
+        if($row > 0){
+            redirect('admin/question_mgr');
+        }
+    }
+
+    public function update_question()
+    {
+        $FAQ_id = $this -> input -> post('FAQ_id');
+        $FAQ_title = $this -> input -> post('FAQ_title');
+        $FAQ_content = $this -> input -> post('FAQ_content');
+        $row = $this -> faq_model -> update_question($FAQ_id, $FAQ_title, $FAQ_content);
+        if($row > 0){
+            redirect('admin/question_mgr');
+        }else{
+            echo '修改问题信息失败!';
+        }
+    }
+
+    public function delete_question($FAQ_id)
+    {
+        $row = $this -> faq_model -> delete_question($FAQ_id);
+        if($row > 0){
+            redirect('admin/question_mgr');
+        }
+    }
+
 
 
 

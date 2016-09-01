@@ -68,7 +68,7 @@ if(!$adminInfo){
         <table class="am-table am-table-striped am-table-hover table-main">
           <thead>
           <tr>
-            <th>序号</th>
+            <th style="width:45px;">序号</th>
             <th>课程级别</th>
             <th>适合年龄</th>
             <th>课程配置</th>
@@ -91,7 +91,7 @@ if(!$adminInfo){
                 <div class="am-btn-toolbar">
                   <div class="am-btn-group am-btn-group-xs">
                     <button class="btn-edit am-btn am-btn-default am-btn-xs am-text-secondary" data-id="<?php echo $course -> id; ?>"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                    <button class="btn-delete am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" data-id="<?php echo $course -> id; ?>">><span class="am-icon-trash-o"></span> 删除</button>
+                    <button class="btn-delete am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" data-id="<?php echo $course -> id; ?>"style=" margin-left:0px;"><span class="am-icon-trash-o" style="width:12px;"></span> 删除</button>
                   </div>
                 </div>
               </td>
