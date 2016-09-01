@@ -10,10 +10,28 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2016-08-28 22:15:19
+Date: 2016-09-01 13:22:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `t_aboutus`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_aboutus`;
+CREATE TABLE `t_aboutus` (
+  `aboutUs_id` int(11) NOT NULL AUTO_INCREMENT,
+  `aboutUs_chn` text,
+  `aboutUs_en` text,
+  `aboutUs_img` varchar(255) DEFAULT NULL,
+  `add_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`aboutUs_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_aboutus
+-- ----------------------------
+INSERT INTO `t_aboutus` VALUES ('1', '麦金思青少儿英语（McGins English Education）是由在美国从事TESL教学与研究数年的国内外教育专家及一线英语教师团队，专为中国青少年儿童打造的英语学习项目，帮助中国孩子实现英语运用能力和应试水平双提升。麦金思旨在把美国的ESL教育理念和方式，转化为适应中国孩子英语学习特点和实际需求的教育模式。美国教育界有学者提出，“若要适应未来国际社会的不确定性挑战、成为世界公民，各国儿童应当从小被有意识地被培养成为‘3IN’人才”。麦金思通过英语引导青少年儿童建立世界观和人生格局，成为未来国际社会需要的独立、国际化、跨文化的“3IN”人才。', 'McGins English Education is an English learning program specially created for Chinese children by the USA TESL professionals and experienced English teachers. McGins aims at converting the authentic American ESL teaching philosophy and methods into practical approaches for Chinese children’s uniqueness and real needs. Our goal is to help Chinese children improve both overall English competence and test skills. These abilities will lead them to become the “3IN Talents” who can succeed in the future challenging world. The “3IN Talents” is proposed by educators in the USA, which refers to the people who are with Independent living skills, International vision and Intercultural mindset.', null, null);
 
 -- ----------------------------
 -- Table structure for `t_activity`
@@ -32,7 +50,7 @@ CREATE TABLE `t_activity` (
 -- ----------------------------
 -- Records of t_activity
 -- ----------------------------
-INSERT INTO `t_activity` VALUES ('1', '新闻标题是这里', '俺说的是骄傲的就是多好看教案上点击爱上点击按开始大家说的话阿萨德就看见大海大师课很多爱上大家哈市速度会撒娇和电话时间的话撒的。谎啥都看哈师大撒交大速度就爱看啥都好。', '么么哒', 'share1.jpg', null);
+INSERT INTO `t_activity` VALUES ('1', '新闻标题是这里1111', '俺说的是骄傲的就是多好看教案上点击爱上点击按开始大家说的话阿萨德就看见大海大师课很多爱上大家哈市速度会撒娇和电话时间的话撒的。谎啥都看哈师大撒交大速度就爱看啥都好。', '么么哒11111', 'share1.jpg', null);
 INSERT INTO `t_activity` VALUES ('2', '哈哈哈', '嘻嘻嘻', '木马木马', 'share2.jpg', null);
 INSERT INTO `t_activity` VALUES ('3', '呼呼呼', '啦啦啦', null, 'share3.jpg', null);
 INSERT INTO `t_activity` VALUES ('4', '呀呀呀', '呦呦呦', null, 'share1.jpg', null);
@@ -75,7 +93,7 @@ CREATE TABLE `t_course` (
 -- ----------------------------
 -- Records of t_course
 -- ----------------------------
-INSERT INTO `t_course` VALUES ('1', 'Enlightening', '4-6岁（幼儿园 Kindergarten）', '听说读写+拼读+绘本(EMC + Phonics+Little books)', '听说读写启蒙：主题式课程单元，帮助儿童认识自己及周围环境，掌握日常生活词汇、生活用语、重点句型、简单日常对话、课堂用语。\r\n\r\n拼读启蒙：掌握基本拼读规律，能朗读简单短文、绘本。养成自信，培养语感，激发兴趣，享受双语的乐趣，幼小衔接。');
+INSERT INTO `t_course` VALUES ('1', 'Enlightening', '4-6岁（幼儿园 Kindergarten）', '听说读写+拼读+绘本(EMC + Phonics+Little books)', '<p>\r\n	听说读写启蒙：主题式课程单元，帮助儿童认识自己及周围环境，掌握日常生活词汇、生活用语、重点句型、简单日常对话、课堂用语。\r\n拼读启蒙：掌握基本拼读规律，能朗读简单短文、绘本。养成自信，培养语感，激发兴趣，享受双语的乐趣，幼小衔接。\r\n</p>');
 INSERT INTO `t_course` VALUES ('2', 'Activating', '7-9岁（一至三年级Grade 1-3）', '听说读写+拼读+语法+阅读(AMC + Phonics + Grammar + Primary Reading)', '听说读写进阶：进入小学初级英语学习阶段，多元化课程设计，通过英语认识世界、认识自我，形成内在学习动机，积累重点词汇、句型，听说读写并进。\r\n\r\n小学语法入门：零枯燥学语法，语法知识自然掌握，形成语感，掌握规律，为阅读、写作打牢基础。\r\n\r\n拼读+阅读：掌握发音规律，见词能读，听音能写，由读词向读文章进阶。');
 INSERT INTO `t_course` VALUES ('3', 'Growing', '10-12岁（三至五年级 Grade 3-5）', '听说读写+拼读+语法+精读 (GMC + Phonics + Grammar + Top Reading)', '说读写飞跃：进入小学中高级英语学习阶段，运用与应试并驾齐驱，了解西方文化，培养自主学习能力，养成良好的学习习惯和思考能力，保持内在学习动机。巩固加强已有英语知识。本阶段词汇量设定高于国家规定的小学毕业生的英语课标。\r\n\r\n小学语法强化：配套语法教程，完成本阶段后，语法能力相当于初一水平。\r\n\r\n拼读+精读：拼读辅助背单词， 由朗读文章向阅读理解飞跃，训练边读边理解的能力，全面提高阅读水平，为小升初做好准备。');
 INSERT INTO `t_course` VALUES ('4', 'Rising', '13-15岁（初中 Middle School）', '听说读写+语法+体裁精读+写作 (RMC + Grammar + Genre Reading + Writing)', '中听说读写：在轻松应对学校英语考试的同时，挑战同年龄美国孩子学习内容及学习模式，使综合英语能力超越同龄人，为中考及雅思、托福等出国考试打下坚实基础。\r\n\r\n初中语法强化：通过大量的“隐性”练习，让学生不知不觉中记住用法、掌握规律、活学活用，全面辅助提升听说读写综合能力。\r\n\r\n体裁精读+写作：英美文学赏析，不同体裁阅读，调研、报告、演讲能力训练，培养英语的实力。');
@@ -107,6 +125,32 @@ INSERT INTO `t_faq` VALUES ('9', '家长应该帮助孩子复习、练习吗？'
 INSERT INTO `t_faq` VALUES ('10', '麦金思每个班有多少个孩子？', '所有班级均为精品小班，每班为5-10人，确保每个孩子都得到关注。', '2016-08-18 22:58:20');
 
 -- ----------------------------
+-- Table structure for `t_features`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_features`;
+CREATE TABLE `t_features` (
+  `features_id` int(11) NOT NULL AUTO_INCREMENT,
+  `features_title_chn` varchar(255) DEFAULT NULL,
+  `features_title_en` varchar(255) DEFAULT NULL,
+  `features_chn` text,
+  `features_en` text,
+  `add_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`features_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_features
+-- ----------------------------
+INSERT INTO `t_features` VALUES ('1', '特色一', 'Features 1', '首家引进被美国英语教育学者公认，并获得普遍赞誉的“最适合中国儿童英语学习”的原版教材。', 'Exclusively imported original editions of teaching materials which are highly recommended by the USA TESL professionals to meet Chinese English learners’ needs.', '2016-08-31 13:36:40');
+INSERT INTO `t_features` VALUES ('2', '特色二', 'Features 2', '由美国TESL硕士、K-12 ESL美国教育部注册教师、曾任教于美国公立学校、并曾担任美国加州知名培训机构校区总监、中国深圳连锁英语培训机构教学总监的Ms.Laura，亲自督导教学、培训师资。', 'The teaching department is supervised by Ms. Laura, who holds a Master degree in TESL, is a licensed K-12 ESL teacher of the USA, has taught in public schools in the USA, was the Director of an after-school institution in California, USA and was the Teach', '2016-08-31 13:38:06');
+INSERT INTO `t_features` VALUES ('3', '特色三', 'Features 3', '美国英语教育专家团队全程提供教学支持，实时更新来自美国最新的教学资源与方法。', 'Latest teaching resources and methods updated timely by TESL professionals from the USA.', '2016-08-31 13:38:36');
+INSERT INTO `t_features` VALUES ('4', '特色四', 'Features 4', '教师团队是由经过严格选拔、考核、培训的专业青少儿英语教师组成，个人教学能力均达到麦金思教学标准。', 'Teachers at McGins are all professionally screened, assessed and trained to meet the high TESL teaching standards at McGins.', '2016-08-31 13:38:58');
+INSERT INTO `t_features` VALUES ('5', '特色五', 'Features 5', '确保轻松应对在校英语考试，并无缝对接美国中小学课程，为考取名校、出国留学、出国考试打牢基础。', 'Ensure students to meet their own school English standards, and also have the ability to study abroad, prepare for top-tier schools and standardized language tests.', '2016-08-31 13:39:23');
+INSERT INTO `t_features` VALUES ('6', '特色六', 'Features 6', '独家特色美国游学、文化体验项目，零距离感受真正美国文化。', 'Exclusive study tour and culture experience program to enjoy the authentic American life.', '2016-08-31 13:39:45');
+INSERT INTO `t_features` VALUES ('7', '特色七', 'Features 7', '采用“启发式”和“探索式”教学法，培养学生独立学习和辩证思维的能力。', 'Integrate “Heuristic Teaching Method” and “Exploratory Teaching Model” to cultivate students to become independent learners and critical thinkers.', '2016-08-31 13:40:14');
+INSERT INTO `t_features` VALUES ('8', '特色八', 'Features 8', '权威测评体系，为每个孩子量身定制专属英语学习规划。', 'Use authoritative evaluation system to make the most appropriate English study-plan for each child.', '2016-08-31 13:40:30');
+
+-- ----------------------------
 -- Table structure for `t_index`
 -- ----------------------------
 DROP TABLE IF EXISTS `t_index`;
@@ -136,25 +180,19 @@ INSERT INTO `t_index` VALUES ('8', '特色八', '权威测评体系，为每个�
 DROP TABLE IF EXISTS `t_job`;
 CREATE TABLE `t_job` (
   `job_id` int(11) NOT NULL AUTO_INCREMENT,
-  `job_welfare` varchar(255) DEFAULT NULL,
-  `job_teacher_recruit` varchar(255) DEFAULT NULL,
-  `job_teacher_qualifications` varchar(255) DEFAULT NULL,
-  `job_advisor_study` varchar(255) DEFAULT NULL,
-  `job_advisor_qualifications` varchar(255) DEFAULT NULL,
+  `job_title` varchar(255) DEFAULT NULL,
+  `job_content` text,
   PRIMARY KEY (`job_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_job
 -- ----------------------------
-INSERT INTO `t_job` VALUES ('1', '1.国际化的工作环境：愉快，互助，分享，专业，公平，合作，平等，重视能力', '1.全英文教授麦金思课程体系，授课对象为4-15岁青少儿；', '1.热爱英语教学，了解儿童身心发展；', '1.日常教务教学管理', '1.大专以上学历，英语、教育、心理学专业，有与4-15岁青少年儿童工作经验者优先；');
-INSERT INTO `t_job` VALUES ('2', '2.专业的培训机制', '2.依照麦金思标准化流程按时做好备课及教学研讨等，确保教学质量；', '2.英语口语表达流畅，语感良好，发音标准；', '2.为来电及上门咨询者详细解答问题、积极开展课程推荐、体验课程预约和报名签约', '2.有亲和力，真诚，勤奋，负责，有爱心，踏实稳重，执行力强，善于思考总结，服务意识强，抗压能力强，沟通表达能力良好；');
-INSERT INTO `t_job` VALUES ('3', '3.体验真正美国文化，有机会与美国团队合作，出访美国', '3.参与培训、教研和会议等活动；', '3.具备责任心、爱心、耐心、亲和力；', '3.参与培训、教研和会议等活动；', '3.有教育或其他行业销售经验者优先；');
-INSERT INTO `t_job` VALUES ('4', '4.有竞争力的薪资，包括底薪、提成等', '4.电话回访，日常沟通，同步辅导，作业批改等；', '4.本科以上英语、师范或教育专业，至少2年以上全职少儿英语教学经验，英语水平相当于专业4级或以上优先考虑；', '4.对学生的英语学习进展给予专业反馈和建议；', '4.熟练运用办公软件');
-INSERT INTO `t_job` VALUES ('5', '5.五险，6天8小时工作制', '5.对学生的学习效果进行有效反馈，及时做出教学调整方案；', '5.有团队协作精神，良好的沟通表达能力，有服务意识，进取心，很强的组织协调能力；', '5.负责与老师、学生、家长、主管的全面有效沟通，确保信息统一和客户满意度', null);
-INSERT INTO `t_job` VALUES ('6', '6.公平、透明的职业晋升平台，表现优秀的学习顾问，可提前竞聘或调整为主管岗位', '6.组织试听课、公开课，协助关单、续费等招生活动，与学习顾问协力为学员量身定制学习规划；', '6.可以适应弹性工作时间安排，如周末工作；', '6.协同团队完成每月的销售指标；', null);
-INSERT INTO `t_job` VALUES ('7', '7.丰富多样的团队活动', '7.领导交付的其他任务。', '7.有学习钻研与创新意识，积极学习探索国际英语教学及儿童心理学前沿理论知识，并将其运用到工作中；', '7.组织参与市场推广等招生活动', null);
-INSERT INTO `t_job` VALUES ('8', null, null, '8.教学水平及课控能力突出，英语教育专业知识丰富，乐于分享', '8.完成上级交付的其它工作任务安排', null);
+INSERT INTO `t_job` VALUES ('1', '教师福利', '1.国际化的工作环境：愉快，互助，分享，专业，公平，合作，平等，重视能力2.专业的培训机制3.体验真正美国文化，有机会与美国团队合作，出访美国4.有竞争力的薪资，包括底薪、提成等5.五险，6天8小时工作制6.公平、透明的职业晋升平台，表现优秀的学习顾问，可提前竞聘或调整为主管岗位');
+INSERT INTO `t_job` VALUES ('2', '青少儿英语教师 岗位要求：', '1.全英文教授麦金思课程体系，授课对象为4-15岁青少儿；2.依照麦金思标准化流程按时做好备课及教学研讨等，确保教学质量；3.参与培训、教研和会议等活动；4.电话回访，日常沟通，同步辅导，作业批改等；5.对学生的学习效果进行有效反馈，及时做出教学调整方案；6.组织试听课、公开课，协助关单、续费等招生活动，与学习顾问协力为学员量身定制学习规划；7.领导交付的其他任务。');
+INSERT INTO `t_job` VALUES ('3', '青少儿英语教师 任职资格', '1.热爱英语教学，了解儿童身心发展；2.英语口语表达流畅，语感良好，发音标准；3.具备责任心、爱心、耐心、亲和力；4.本科以上英语、师范或教育专业，至少2年以上全职少儿英语教学经验，英语水平相当于专业4级或以上优先考虑；5.有团队协作精神，良好的沟通表达能力，有服务意识，进取心，很强的组织协调能力；6.可以适应弹性工作时间安排，如周末工作；7.有学习钻研与创新意识，积极学习探索国际英语教学及儿童心理学前沿理论知识，并将其运用到工作中；8.教学水平及课控能力突出，英语教育专业知识丰富，乐于分享');
+INSERT INTO `t_job` VALUES ('4', '学习顾问 岗位职责', '1.日常教务教学管理2.为来电及上门咨询者详细解答问题、积极开展课程推荐、体验课程预约和报名签约3.参与培训、教研和会议等活动；4.对学生的英语学习进展给予专业反馈和建议；5.负责与老师、学生、家长、主管的全面有效沟通，确保信息统一和客户满意度6.协同团队完成每月的销售指标；7.组织参与市场推广等招生活动8.完成上级交付的其它工作任务安排');
+INSERT INTO `t_job` VALUES ('5', '学习古文 任职要求', '1.大专以上学历，英语、教育、心理学专业，有与4-15岁青少年儿童工作经验者优先；2.有亲和力，真诚，勤奋，负责，有爱心，踏实稳重，执行力强，善于思考总结，服务意识强，抗压能力强，沟通表达能力良好；3.有教育或其他行业销售经验者优先；4.熟练运用办公软件');
 
 -- ----------------------------
 -- Table structure for `t_team`
@@ -172,10 +210,10 @@ CREATE TABLE `t_team` (
 -- ----------------------------
 -- Records of t_team
 -- ----------------------------
-INSERT INTO `t_team` VALUES ('1', '教学督导', 'Ms.Laura Zhou', 'member1.jpg', '美国TESL硕士， K-12 ESL美国育部注册教师，曾任教于美国公立学校，曾任美国加州知名培训机构校区总监。她帮助过很多世界各地的移民家庭学习英语并适应美国生活，帮助中国孩子找到学习方法、提高综合英语水平和应试能力。她的学生小到2岁半，大到60岁。 Laura老师带领麦金思教学团队一起探究适合中国青少儿语言发展的教学模式和方法。她尊重孩子的自我塑造和学习能力。她的专业研究领域为英语学习风格和学习策略，及儿童发展学。她的教育理念是“用心育人的教师会改变孩子的一生”。');
-INSERT INTO `t_team` VALUES ('2', '美国教育专家', 'Dr. Sandy Chan', 'member2.jpg', 'Sandy博士带领麦金思美国教研专家团队为我们精心挑选并实时更新最适合中国孩子的英语教学资源，为我们的教师团队提供培训和教学支持。Sandy博士及团队成员在国内外有着多年的英语教学经验，在美国从事TESL和课程教学方面的研究数年，指导过很多国内外优秀英语教师，深知中国孩子学习英语的特点，并在国内外重要学术期刊发表过许多有关英语教研方面的文章。Sandy博士的教育理念是“找到每个孩子身上的亮点，点亮他们的人生”。');
-INSERT INTO `t_team` VALUES ('3', '运营总监', 'Mr. Harris Zhang', 'member3.jpg', '本科就读于哈尔滨工业大学，持有美国工商管理硕士（MBA），美国会计与金融管理硕士，曾任职于美国和加拿大知名会计师事务所、企业战略咨询公司。他在北美工作期间，曾多次组织参与过扶持资助贫困儿童及家庭的计划，深知儿童教育的重要性。他决定投身于儿童教育事业，只为将最好的教育带给中国青少年儿童。');
-INSERT INTO `t_team` VALUES ('4', '核心成员', 'Dr. Sandy Chan', 'member4.jpg', 'Sandy博士带领麦金思美国教研专家团队为我们精心挑选并实时更新最适合中国孩子的英语教学资源，为我们的教师团队提供培训和教学支持。Sandy博士及团队成员在国内外有着多年的英语教学经验，在美国从事TESL和课程教学方面的研究数年，指导过很多国内外优秀英语教师，深知中国孩子学习英语的特点，并在国内外重要学术期刊发表过许多有关英语教研方面的文章。Sandy博士的教育理念是“找到每个孩子身上的亮点，点亮他们的人生”。');
+INSERT INTO `t_team` VALUES ('1', '教学督导', 'Ms.Laura Zhou', 'uploads/20160901060823_22178.jpg', '0');
+INSERT INTO `t_team` VALUES ('2', '美国教育专家', 'Dr. Sandy Chan', 'uploads/20160901060850_56296.jpg', 'Sandy博士带领麦金思美国教研专家团队为我们精心挑选并实时更新最适合中国孩子的英语教学资源，为我们的教师团队提供培训和教学支持。Sandy博士及团队成员在国内外有着多年的英语教学经验，在美国从事TESL和课程教学方面的研究数年，指导过很多国内外优秀英语教师，深知中国孩子学习英语的特点，并在国内外重要学术期刊发表过许多有关英语教研方面的文章。Sandy博士的教育理念是“找到每个孩子身上的亮点，点亮他们的人生”。');
+INSERT INTO `t_team` VALUES ('3', '运营总监', 'Mr. Harris Zhang', 'uploads/20160901060901_47287.jpg', '本科就读于哈尔滨工业大学，持有美国工商管理硕士（MBA），美国会计与金融管理硕士，曾任职于美国和加拿大知名会计师事务所、企业战略咨询公司。他在北美工作期间，曾多次组织参与过扶持资助贫困儿童及家庭的计划，深知儿童教育的重要性。他决定投身于儿童教育事业，只为将最好的教育带给中国青少年儿童。');
+INSERT INTO `t_team` VALUES ('4', '核心成员', 'Dr. Sandy Chan', 'uploads/20160901060910_16462.jpg', 'Sandy博士带领麦金思美国教研专家团队为我们精心挑选并实时更新最适合中国孩子的英语教学资源，为我们的教师团队提供培训和教学支持。Sandy博士及团队成员在国内外有着多年的英语教学经验，在美国从事TESL和课程教学方面的研究数年，指导过很多国内外优秀英语教师，深知中国孩子学习英语的特点，并在国内外重要学术期刊发表过许多有关英语教研方面的文章。Sandy博士的教育理念是“找到每个孩子身上的亮点，点亮他们的人生”。');
 
 -- ----------------------------
 -- Table structure for `t_webinfo`
