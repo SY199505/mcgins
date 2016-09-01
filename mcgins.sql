@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2016-09-01 13:22:48
+Date: 2016-09-01 18:57:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -233,4 +233,4 @@ CREATE TABLE `t_webinfo` (
 -- ----------------------------
 -- Records of t_webinfo
 -- ----------------------------
-INSERT INTO `t_webinfo` VALUES ('1', '0451-55157643', '09162839876@qq.com', 'www.mcgins.com', '13809764375', '86142083571', '地址要换行');
+INSERT INTO `t_webinfo` VALUES ('1', '0451-55157643', '09162839876@qq.com', 'www.mcgins.com', '13809764375', '86142083571', '黑龙江省哈尔滨市南岗哈西绥化路纳帕英郡S57(松雷中学斜对面，69路、83路纳帕英郡小区站)');
