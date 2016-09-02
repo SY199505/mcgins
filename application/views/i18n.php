@@ -46,7 +46,8 @@ var translationsEN = {
   WEICHAT: 'Weichat : ',
   CONTACT: 'Address : ',
   ADDRESS: 'Suihua Road, Nangang District, Harbin City, Heilongjiang Province',
-  CONTACTUS: 'Contact Us'
+  CONTACTUS: 'Contact Us',
+  PHONE: 'Phone : '
 }
 
 var translationsCHN = {
@@ -86,7 +87,8 @@ var translationsCHN = {
   WEICHAT: '微信：',
   CONTACT: '联系地址：',
   ADDRESS: '黑龙江省哈尔滨市南岗哈西绥化路纳帕英郡S57(松雷中学斜对面，69路、83路纳帕英郡小区站)',
-  CONTACTUS: '联系我们'
+  CONTACTUS: '联系我们',
+  PHONE: '手机 :'
   
 
 }

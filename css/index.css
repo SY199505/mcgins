@@ -1,20 +1,32 @@
+#content{
+	/*height: 100%;*/
+}
+#content .feature{
+	background: url(../img/content-bg.jpg) no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+	/*height: 100%;*/
+}
+#content .feature li:nth-child(n+5){
+	margin-top: 15%;
+}
 
-#content .feature-first{	
+/*#content .feature-first{
 	background: url(../img/content-first-bg.jpg) no-repeat;
 	background-size: cover;
-	/*height: 61%;*/
+	!*height: 61%;*!
 }
 #content .feature-second{	
 	background: url(../img/content-first-bg.jpg) no-repeat;
 	background-size: cover;
-	/*height: 40%;*/
+	!*height: 40%;*!
 	padding: 20px;
-}
+}*/
 #content .title{
-	height: 100px;
+	/*height: 100px;*/
 }
 #content li{
-	margin-top: 20%;
+	/*margin-top: 5%;*/
 }
 #content h2{
 	font-size: 1.07rem;

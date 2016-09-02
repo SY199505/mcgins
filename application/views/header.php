@@ -4,7 +4,7 @@
 		<div class="row">
 			<div id="header" class="col-md-10 col-md-offset-1">
 				<!-- logo -->
-				<a href="index.html" class="col-md-5 col-sm-5">
+				<a href="index.php" class="col-md-5 col-sm-5">
 					<img src="img/header-logo.png" alt="" class="">
 				</a>
 				<!-- 按钮 -->
@@ -21,7 +21,7 @@
 				<!-- 中英文 -->
 				<div id="change" class="col-md-3 col-sm-4">
 					<a ng-click="changeLanguage('chn')" href="javascript:;" translate="BUTTON_LANG_CHN">中文</a> |
-					<a ng-click="changeLanguage('en')" href="javascript:;" translate="BUTTON_LANG_EN" >English</a>
+					<a ng-click="changeLanguage('en')" href="javascript:;" translate="BUTTON_LANG_EN" >ENGLISH</a>
 				</div>
 
 				<!-- <div id="change" class="col-md-2 col-sm-3 col-xs-5">

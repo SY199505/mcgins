@@ -174,12 +174,16 @@ class Welcome extends CI_Controller {
 
 	public function article($activity_id)
 	{
-     	
+		$result1 = $this -> footer_model -> get_all();
+		$result = $this -> activity_model -> get_by_id($activity_id);
+		$data = array(
+				'footerInfo' => $result1,
+				'activity' => $result
+		);
+		$this -> load -> view('article', $data);
 		//$this -> input -> get('activity_id');
-		$row = $this -> activity_model -> get_by_id($activity_id);
-
-
-		$this -> load -> view('article',array('activity' => $row));
+		//$row = $this -> activity_model -> get_by_id($activity_id);
+		//$this -> load -> view('article',array('activity' => $row));
 
 	}
 

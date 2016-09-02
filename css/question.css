@@ -13,10 +13,10 @@
 	
 }
 
-span{
-	display: inline-block;
+span {
+	display: block;
+	cursor: pointer;
 }
-
 
 @media all and (max-width: 768px) {
 

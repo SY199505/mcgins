@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
 	<meta charset="UTF-8">
@@ -72,7 +72,7 @@
 <div class="container">
     <div class="row">
         <div id="content" class="col-md-10 col-md-offset-1">
-            <div class="feature-first col-md-12 col-sm-12">
+            <div class="feature col-md-12 col-sm-12">
                 <div class="title">
                     <h1 class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 text-center">麦金思特色教育</h1>
                     <p class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 text-center">McGins English Education Feature</p>
@@ -98,10 +98,10 @@
                         <h2 class="text-center" ng-bind="'Features.item4.title4' | translate"></h2>
                         <p class="{{'JUSTIFY' | translate}}" ng-bind="'Features.item4.content4' | translate"></p>
                     </li>
-                </ul>
+                <!--</ul>
             </div>
             <div class="feature-second col-md-12 col-sm-12">
-                <ul>
+                <ul>-->
                     <li class="col-md-3 col-sm-6 col-xs-12">
                         <img src="img/icon5.jpg" alt="" class="img-circle img-responsive center-block" width="74px" height="74px">
                         <h2 class="text-center" ng-bind="'Features.item5.title5' | translate"></h2>

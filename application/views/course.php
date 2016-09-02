@@ -108,7 +108,7 @@
         	// color: ['#d9534f'],
         	// color: ['#4285f4'],
         	// color: ['#f0ad4e'],
-        	//backgroundColor: '-webkit-gradient(linear, 0% 0%, 0% 100%,from(#15A216), to(#fafafa))',	
+        	//backgroundColor: '-webkit-gradient(linear, 0% 0%, 0% 100%,from(#15A216), to(#fafafa))',
             title: {
                 text: '学习难度'
             },
@@ -171,6 +171,9 @@
         };
 
         // 使用刚指定的配置项和数据显示图表。
+
+
+
         myChart.setOption(option);
     </script>
 </body>

@@ -2,11 +2,13 @@
 <html lang="en" ng-app="myApp">
 	<head>
 		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<title>intro</title>
 		<base href="<?php echo site_url();?>">
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
-		<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/intro.css">
 	</head>

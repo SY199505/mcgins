@@ -26,14 +26,14 @@
 			<div class="info col-md-6 col-xs-12" >
 				<div class="title text-center" ng-bind="'CONTACTUS' | translate"></div>
 				<ul>
-                    <li><a href="tel:13809764375">{{'TEL'|translate}}  <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_tel;}?></a></li>
-                    <li><a href="">{{'WEICHAT'|translate}} <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_wechat;}?></a></li>
-					<li><a href="mailto:09162839876@qq.com">{{'EMAIL'|translate}} <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_mail;}?></a></li>
-                    <li><a href="www.mcgins.com">{{'WEBSITE'|translate}} <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_website;}?></a></li>
+                    <li><a href="tel:<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_phone;}?>">{{'PHONE'|translate}}  <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_phone;}?></a></li>
+                    <li><a href="http://wx.qq.com">{{'WEICHAT'|translate}} <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_wechat;}?></a></li>
+					<li><a href="mailto:<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_mail;}?>">{{'EMAIL'|translate}} <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_mail;}?></a></li>
+                    <li><a href="http://www.mcgins.com">{{'WEBSITE'|translate}} <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_website;}?></a></li>
+					{{'CONTACT'|translate}}<br/>
 					<li>
-					{{'CONTACT'|translate}} 
-					<br>	
-					<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_addr;}?></li>
+						{{'ADDRESS'|translate}}
+					<?php /*foreach($contactInfo as $key=>$value) {echo $value -> webinfo_addr;}*/?></li>
 				</ul>
 			</div>
 			<div id="allmap" class="col-md-6 col-xs-12 img-responsive"></div>
