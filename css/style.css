@@ -48,7 +48,7 @@ background: rgb(66, 133, 244);
 }
 
 #nav{
-	background: #002b7f;
+	background: #002B7F;
 
 }
 #nav ul{
@@ -164,4 +164,56 @@ background: rgb(66, 133, 244);
 	clear: both;
 	visibility: hidden;
 }
+
+#mobile-nav{
+	display: none;
+}
+
+@media all and (max-width: 768px) {
+	#mobile-nav{
+		display: block;
+		background: #002b7f;
+	}
+
+	#main-navbar{
+		display: none;
+	}
+}
+
+
+.nav li a:hover{
+	/*background: rgb(66, 133, 244);*/
+	color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.link{
+	color: #fff;
+}
+
+.link:visited{
+	background: #f00;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

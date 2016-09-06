@@ -11,7 +11,7 @@
 }
 #share li{
 	margin: 20px 0;
-	height: 150px; 
+	height: 30%;
 	border-bottom: 1px solid #e7e7e7;
 }
 #share img{
@@ -37,4 +37,13 @@
 #active img{
 	padding: 0;
 	margin: 20px 0;
+}
+
+
+@media all and (max-width: 768px) {
+
+	#write{
+		margin-top: 20px;
+	}
+	
 }

@@ -112,3 +112,23 @@
 #main{
 	height: 400px;
 }
+
+#main{
+	width: 70%;
+	height: 400px;
+}
+
+@media all and (max-width: 768px) {
+
+	#content{
+		margin-top: 70px;
+	}
+	
+}
+/*@media all and (max-width: 900px){
+	#main{
+		width: 50%;
+		height: 300px;
+	}
+
+}*/

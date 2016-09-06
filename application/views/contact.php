@@ -6,14 +6,12 @@
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
 	<title>联系我们</title>
 	<base href="<?php echo site_url();?>">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/contact.css">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link rel="stylesheet" href="css/font-awesome.min.css" />
-	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5dEsfUlwMV0GdHlxoqgvlxE0"></script> 
+	<link rel="stylesheet" href="css/contact.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+	
 	<style>
 
 	</style>
@@ -28,14 +26,14 @@
 			<div class="info col-md-6 col-xs-12" >
 				<div class="title text-center" ng-bind="'CONTACTUS' | translate"></div>
 				<ul>
-                    <li><a href="tel:13809764375">{{'TEL'|translate}}  <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_tel;}?></a></li>
-                    <li><a href="">{{'WEICHAT'|translate}} <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_wechat;}?></a></li>
-					<li><a href="mailto:09162839876@qq.com">{{'EMAIL'|translate}} <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_mail;}?></a></li>
-                    <li><a href="www.mcgins.com">{{'WEBSITE'|translate}} <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_website;}?></a></li>
+                    <li><a href="tel:<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_phone;}?>">{{'PHONE'|translate}}  <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_phone;}?></a></li>
+                    <li><a href="http://wx.qq.com">{{'WEICHAT'|translate}} <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_wechat;}?></a></li>
+					<li><a href="mailto:<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_mail;}?>">{{'EMAIL'|translate}} <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_mail;}?></a></li>
+                    <li><a href="http://www.mcgins.com">{{'WEBSITE'|translate}} <?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_website;}?></a></li>
+					{{'CONTACT'|translate}}<br/>
 					<li>
-					{{'CONTACT'|translate}} 
-					<br>	
-					<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_addr;}?></li>
+						{{'ADDRESS'|translate}}
+					<?php /*foreach($contactInfo as $key=>$value) {echo $value -> webinfo_addr;}*/?></li>
 				</ul>
 			</div>
 			<div id="allmap" class="col-md-6 col-xs-12 img-responsive"></div>

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">>
+<html lang="en" ng-app="myApp">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<title>team</title>
 		<base href="<?php echo site_url();?>">
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
-		<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="css/font-awesome.min.css" /><link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/team.css">
 	</head>
 	<body ng-controller="myCtrl">
@@ -16,17 +16,17 @@
 		<!-- 头部结束 -->
 		<div class="container">
 			<div class="row">
-				<img src="img/news.jpg" class="img-responsive  col-md-10 col-md-offset-1" style="padding:0;margin-top: 160px;" alt="">
+				<img src="img/news.jpg" class="team-photo img-responsive  col-md-10 col-md-offset-1">
 				<div id="intro" class="col-md-10 col-md-offset-1">团队介绍</div>
 			</div>
 			<div class="row member">
-				<div class="col-md-10 item col-md-offset-1">
+				<div class="col-md-10 item col-md-offset-1 col-xs-12">
 					<?php
 						foreach ($member as $member) {
 					?>
-					<div class="col-md-6 item">
-						<img src="<?php   echo $member -> img;?>" class=" img-responsive col-md-6 " alt="">
-						<div class="content col-md-6">
+					<div class="col-md-6 col-xs-12 item">
+						<img src="<?php   echo $member -> img;?>" class=" col-md-6 col-xs-6" alt="#">
+						<div class="content col-md-6 col-xs-6">
 							<h4><?php   echo $member -> type;?></h4>
 							<h4><?php   echo $member -> name;?></h4>
 							<h5>自我介绍：</h5>
@@ -35,7 +35,7 @@
 					</div>
 					<?php
 					}
-					;?>
+					?>
 				</div>
 				
 			</div>

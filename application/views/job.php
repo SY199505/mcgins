@@ -33,7 +33,7 @@
 					<?php 
 					foreach($jobInfo as $job){
 					?>
-						<?php echo $job -> job_title; ?>
+						<h3><?php echo $job -> job_title; ?></h3>
 						<p><?php echo $job -> job_content; ?></p>
 					<?php
 					}

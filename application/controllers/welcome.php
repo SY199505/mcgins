@@ -42,6 +42,7 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
+		//$this -> i18n();
     	$result1 = $this -> footer_model -> get_all();
 		$result = $this -> index_model -> get_all();
 		$data = array(
@@ -132,13 +133,39 @@ class Welcome extends CI_Controller {
 
 	public function news()
 	{
+
+		$news_count = $this -> activity_model -> get_news_count();
+        $offset = $this -> uri -> segment(3)==NULL?0 : $this -> uri -> segment(3);
+        $this->load->library('pagination');
+        $config['base_url'] = 'welcome/news';
+        $config['total_rows'] = $news_count;
+        $config['per_page'] = 3;
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+        $config['last_link'] = FALSE;
+		$config['first_link'] = FALSE;
+        $config['prev_link'] = '«';//上一页
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '»';//下一页
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['num_tag_open'] = '<li>';//每个数字页
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="'.$config['base_url'].'">';//当前页
+        $config['cur_tag_close'] = '</a></li>';
+
+        $this -> pagination -> initialize($config);
+
+		$result = $this -> activity_model -> get_news_by_page($config['per_page'],$offset);
      
 		
     	$result1 = $this -> footer_model -> get_all(); 
-		$result = $this -> activity_model -> get_all();
+		//$result = $this -> activity_model -> get_all();
 		$data = array(
 			'footerInfo' => $result1,
-			'activityInfo' => $result
+			'activityInfo' => $result,
+			'news_total' => $news_count
 		);
  
 		$this -> load -> view('news',$data);
@@ -147,12 +174,16 @@ class Welcome extends CI_Controller {
 
 	public function article($activity_id)
 	{
-     	
+		$result1 = $this -> footer_model -> get_all();
+		$result = $this -> activity_model -> get_by_id($activity_id);
+		$data = array(
+				'footerInfo' => $result1,
+				'activity' => $result
+		);
+		$this -> load -> view('artice', $data);
 		//$this -> input -> get('activity_id');
-		$row = $this -> activity_model -> get_by_id($activity_id);
-
-
-		$this -> load -> view('article',array('activity' => $row));
+		//$row = $this -> activity_model -> get_by_id($activity_id);
+		//$this -> load -> view('article',array('activity' => $row));
 
 	}
 

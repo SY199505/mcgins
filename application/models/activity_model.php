@@ -10,36 +10,66 @@ class Activity_model extends CI_Model {
         return $query->result();
 
     }
-    public function get_by_id($activity_id)
+    
+
+    public function get_news_count()
     {
-    	return $this -> db -> get_where('t_activity',array('activity_id' => $activity_id)) -> row();
+        return $this -> db -> count_all('t_activity');
     }
 
-    // public function save_course($levels, $age, $courses, $intro){
-    //     $this -> db -> insert('t_course', array(
-    //         'levels' => $levels,
-    //         'age' => $age,
-    //         'courses' => $courses,
-    //         'intro' => $intro
-    //     ));
-    //     return $this -> db -> affected_rows();
-    // }
 
-    public function update_news($activity_id, $activity_title, $activity_desc, $activity_content)
+
+    public function get_news_by_page($limit,$offset)
     {
-        $this -> db -> where('activity_id', $activity_id);
-        $this -> db -> update('t_activity', array(
-            'activity_title' => $activity_title,
-            'activity_desc' => $activity_desc,
-            'activity_content' => $activity_content,
-        ));
+        $this -> db -> order_by('add_time','desc');
+        $query = $this -> db -> get('t_activity',$limit,$offset);
+        return $query->result();
+    }
+
+    public function save_news_by_all($title,$content,$photo_url)
+    {
+         $data = array(
+            'activity_title' => $title,
+            'activity_content' => $content,
+            'activity_img' => $photo_url
+        );
+        $this -> db -> insert('t_activity',$data);
         return $this -> db -> affected_rows();
     }
 
-    // public function delete_course($course_id)
-    // {
-    //     $this->db->delete('t_course', array('id' => $course_id));
-    //     return $this -> db -> affected_rows();
+     public function delete_by_id($id)
+     {
+        $this -> db -> delete('t_activity', array('activity_id' => $id));
+        return $this -> db -> affected_rows();
+     }
 
-    // }    
+
+     public function get_by_id($id)
+     {
+        return $this -> db -> get_where('t_activity',array('activity_id' => $id)) -> row();
+     }
+
+     public function update_news_by_all($id,$title,$content,$photo_url)
+     {
+
+        $this -> db -> where('activity_id', $id);
+        $this -> db -> update('t_activity', array(
+            'activity_title' => $title,
+            'activity_content' => $content,
+            'activity_img' => $photo_url,
+        ));
+        return $this -> db -> affected_rows();
+
+     }
+
+
+
+
+
+
+
+
+
+
+
 }
