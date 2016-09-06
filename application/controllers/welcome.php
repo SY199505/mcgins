@@ -6,7 +6,7 @@ class Welcome extends CI_Controller {
 		parent::__construct();
         $this -> load -> model('admin_model');
 		$this -> load -> model('index_model');
-
+		$this -> load -> model('intro_model');
 		$this -> load -> model('course_model');
     	$this -> load -> model('team_model');
 		$this -> load -> model('job_model');
@@ -184,7 +184,7 @@ class Welcome extends CI_Controller {
 				'footerInfo' => $result1,
 				'activity' => $result
 		);
-		$this -> load -> view('artice', $data);
+		$this -> load -> view('article', $data);
 		//$this -> input -> get('activity_id');
 		//$row = $this -> activity_model -> get_by_id($activity_id);
 		//$this -> load -> view('article',array('activity' => $row));

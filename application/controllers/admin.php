@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
         $this -> load -> model('admin_model');
         $this -> load -> model('index_model');
+        $this -> load -> model('intro_model');
 		$this -> load -> model('course_model');
         $this -> load -> model('team_model');
         $this -> load -> model('job_model');
@@ -160,6 +161,17 @@ class Admin extends CI_Controller {
                 'indexInfo' => $result
             );
             $this -> load -> view('admin/index-mgr', $data);
+        }
+    }
+
+    public function intro_mgr(){
+        $this -> load -> model('intro_model');
+        $result = $this -> intro_model -> get_all();
+        if($result){
+            $data = array(
+                'introInfo' => $result
+            );
+            $this -> load -> view('admin/intro-mgr', $data);
         }
     }
 
@@ -377,6 +389,25 @@ class Admin extends CI_Controller {
         $row = $this -> index_model -> save_index($features_title_chn, $features_chn, $features_title_en, $features_en);
         if($row > 0){
             redirect('admin/index_mgr');
+        }
+    }
+
+    /**
+     *   @admin_mgr
+     *   @admin
+     *   关于我们管理
+     *   @sy199505
+     *   @16/08/23
+     */
+    public function update_intro()
+    {
+        $aboutUs_chn = $this -> input -> post('aboutUs_chn');
+        $aboutUs_en = $this -> input -> post('aboutUs_en');
+        $row = $this -> intro_model -> update_intro($aboutUs_chn, $aboutUs_en);
+        if($row > 0){
+            redirect('admin/intro_mgr');
+        }else{
+            echo '修改信息失败!';
         }
     }
     /**
