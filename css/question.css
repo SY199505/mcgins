@@ -7,6 +7,7 @@
 }
 .selected{
 	background:url(../img/question-bg.jpg) no-repeat;
+	background-size: cover;
 }
 .none{
 	text-decoration: none;

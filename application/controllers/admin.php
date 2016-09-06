@@ -4,7 +4,8 @@ class Admin extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this -> load -> model('admin_model');
+        $this -> load -> model('admin_model');
+        $this -> load -> model('index_model');
 		$this -> load -> model('course_model');
         $this -> load -> model('team_model');
         $this -> load -> model('job_model');
@@ -149,6 +150,16 @@ class Admin extends CI_Controller {
             $this -> load -> view('admin/admin-mgr',$data);
         }
 
+    }
+    public function index_mgr(){
+        $this -> load -> model('index_model');
+        $result = $this -> index_model -> get_all();
+        if($result){
+            $data = array(
+                'indexInfo' => $result
+            );
+            $this -> load -> view('admin/index-mgr', $data);
+        }
     }
 
     public function course_mgr()
@@ -301,22 +312,76 @@ class Admin extends CI_Controller {
     }
 
     /**
-    *   @admin_mgr
-    *   @admin
-    *   课程列表页面
-    *   @isliuwei
-    *   @16/08/23
-    */
+     *   @admin_mgr
+     *   @admin
+     *   课程列表页面
+     *   @sy
+     *   @16/08/23
+     */
+    public function edit_index($index_id)
+    {
+        $index = $this -> index_model -> get_by_id($index_id);
+        $this -> load -> view('admin/index-edit', array('index' => $index));
+    }
+
+    public function update_index()
+    {
+        $features_id = $this -> input -> post('features_id');
+        $features_title_chn = $this -> input -> post('features_title_chn');
+        $features_chn  = $this -> input -> post('features_chn');
+        $features_title_en = $this -> input -> post('features_title_en');
+        $features_en = $this -> input -> post('features_en');
+        $row = $this -> index_model -> update_index($features_id, $features_title_chn, $features_chn, $features_title_en, $features_en);
+        if($row > 0){
+            redirect('admin/index_mgr');
+        }else{
+            echo '修改失败!';
+        }
+    }
+
+    public function delete_index($index_id)
+    {
+        $row = $this -> index_model -> delete_index($index_id);
+        if($row > 0){
+            redirect('admin/index_mgr');
+        }
+    }
+
+    public function add_index()
+    {
+        $this -> load -> view('admin/index-add');
+    }
+
+    public function save_index()
+    {
+//        $features_id = $this -> input -> post('features_id');
+        $features_title_chn = $this -> input -> post('features_title_chn');
+        $features_chn  = $this -> input -> post('features_chn');
+        $features_title_en = $this -> input -> post('features_title_en');
+        $features_en = $this -> input -> post('features_en');
+        $row = $this -> index_model -> save_index($features_title_chn, $features_chn, $features_title_en, $features_en);
+        if($row > 0){
+            redirect('admin/index_mgr');
+        }
+    }
+    /**
+     *   @admin_mgr
+     *   @admin
+     *   课程列表页面
+     *   @isliuwei
+     *   @16/08/23
+     */
     public function add_course()
     {
         $this -> load -> view('admin/course-add');
     }
 
-     public function edit_course($course_id)
+    public function edit_course($course_id)
     {
         $course = $this -> course_model -> get_by_id($course_id);
         $this -> load -> view('admin/course-edit', array('course' => $course));
     }
+
     public function save_course()
     {
         $levels = $this -> input -> post('levels');

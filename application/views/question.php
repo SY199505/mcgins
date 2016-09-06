@@ -7,7 +7,7 @@
 		<base href="<?php echo site_url();?>">
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-		<link rel="stylesheet" href="css/font-awesome.min.css" /><link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/question.css">
 	</head>

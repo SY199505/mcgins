@@ -1,5 +1,10 @@
 
 <base href="<?php echo site_url();?>">
+<!–[if lt IE 9]>
+
+<script src=”http://www.angularjs.cn/wp-content/themes/angularjs/js/html5.js” type=”text/javascript”></script>
+
+<![endif]–>
 <script src="js/angular-1.5.5.js"></script>
 
 <script>

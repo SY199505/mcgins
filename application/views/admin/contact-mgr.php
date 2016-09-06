@@ -91,7 +91,7 @@
               </div>
             </div>
 
-             <div class="am-g am-margin-top">
+            <div class="am-g am-margin-top">
               <div class="am-u-sm-4 am-u-md-2 am-text-right">
                 微信
               </div>
@@ -106,6 +106,15 @@
               </div>
               <div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
                 <input type="text" class="am-input-sm" name="addr" value="<?php echo $contact[0] -> webinfo_addr ;?>">
+              </div>
+            </div>
+            <div class="am-g am-margin-top">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                二维码
+              </div>
+              <div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+<!--                <input type="text" class="am-input-sm" name="QR" value="--><?php //echo $contact[0] -> webinfo_QR ;?><!--">-->
+                <img src="<?php echo $contact[0] -> webinfo_QR ;?>" alt="">
               </div>
             </div>
 
