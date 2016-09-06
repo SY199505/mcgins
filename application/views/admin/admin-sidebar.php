@@ -3,7 +3,7 @@
 <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
     <div class="am-offcanvas-bar admin-offcanvas-bar">
         <ul class="am-list admin-sidebar-list">
-            <li><a href="admin/admin_index"><span class="am-icon-home"></span> 首页 </a></li>
+            <li><a href="admin/nav_mgr"><span class="am-icon-home"></span> 首页 </a></li>
           <li><a href="admin/admin_mgr"><span class="am-icon-user-secret"></span> 管理员管理 </a></li>
             <li><a href="admin/index_mgr"><span class="am-icon-home"></span> 特色管理 </a></li>
 

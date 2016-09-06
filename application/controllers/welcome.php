@@ -16,6 +16,8 @@ class Welcome extends CI_Controller {
 		$this -> load -> model('footer_model');
 		$this -> load -> model('i18n_model');
 		$this -> i18n();
+		$this -> load -> model('nav_model');
+
 
 	}
 
@@ -43,11 +45,13 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		//$this -> i18n();
-    	$result1 = $this -> footer_model -> get_all();
+		$result2 = $this -> nav_model -> get_all();
+		$result1 = $this -> footer_model -> get_all();
 		$result = $this -> index_model -> get_all();
 		$data = array(
 			//尾部
-			'footerInfo' => $result1,				
+			'navInfo' => $result2,
+			'footerInfo' => $result1,
 			'indexInfo' => $result
 		);	 
 		$this -> load -> view('index',$data);
