@@ -1,5 +1,10 @@
 
 <header  class='navbar navbar-fixed-top' id='main-navbar' role='banner' style="background: #fff">
+	<style>
+		#nav  .selected{
+			display: none;
+		}
+	</style>
 	<div class="container">
 		<div class="row">
 			<div id="header" class="col-md-10 col-md-offset-1">
@@ -20,8 +25,8 @@
 				</div>
 				<!-- 中英文 -->
 				<div id="change" class="col-md-3 col-sm-4">
-					<a ng-click="changeLanguage('chn')" href="javascript:;" translate="BUTTON_LANG_CHN">中文</a> |
-					<a ng-click="changeLanguage('en')" href="javascript:;" translate="BUTTON_LANG_EN" >ENGLISH</a>
+					<a ng-click="changeLanguage('chn')" href="javascript:;" translate="BUTTON_LANG_CHN" id="btn-ch">中文</a> |
+					<a ng-click="changeLanguage('en')" href="javascript:;" translate="BUTTON_LANG_EN"  id="btn-en">ENGLISH</a>
 				</div>
 
 				<!-- <div id="change" class="col-md-2 col-sm-3 col-xs-5">
@@ -39,16 +44,56 @@
 <div id="nav" class="{{'BG_COLOR' | translate }}">
 	<div class="container">
 		<div class="row">
-		    <ul class="navigation col-md-10 col-md-offset-1">
-		        <li><a href="welcome/index" ng-bind="'NAV.item1' | translate"></a></li>
-		        <li><a href="welcome/intro" ng-bind="'NAV.item2' | translate"></a></li>
-		        <li><a href="welcome/course" ng-bind="'NAV.item3' | translate"></a></li>
-		        <li><a href="welcome/team" ng-bind="'NAV.item4' | translate"></a></li>
-		        <li><a href="welcome/job" ng-bind="'NAV.item5' | translate"></a></li>
-		        <li><a href="welcome/question" ng-bind="'NAV.item6' | translate"></a></li>
-		        <li><a href="welcome/contact" ng-bind="'NAV.item7' | translate"></a></li>
-		        <li><a href="welcome/news" ng-bind="'NAV.item8' | translate"></a></li>
-		    </ul>  
+		    <ul class="navigation col-md-10 col-md-offset-1 ch">
+				<?php
+				foreach($navInfo as $nav){
+				?>
+					<?php
+					if($nav -> ch=='true'){
+					?>
+						<li><a href="welcome/<?php echo $nav -> ctrl ;?>" ng-bind="'NAV.item<?php echo $nav -> id ;?>' | translate"></a></li>
+					<?php
+					}
+					;?>
+
+
+				<?php
+				}
+				?>
+<!--		        <li><a href="welcome/index" ng-bind="'NAV.item1' | translate"></a></li>-->
+<!--		        <li><a href="welcome/intro" ng-bind="'NAV.item2' | translate"></a></li>-->
+<!--		        <li><a href="welcome/course" ng-bind="'NAV.item3' | translate"></a></li>-->
+<!--		        <li><a href="welcome/team" ng-bind="'NAV.item4' | translate"></a></li>-->
+<!--		        <li><a href="welcome/job" ng-bind="'NAV.item5' | translate"></a></li>-->
+<!--		        <li><a href="welcome/question" ng-bind="'NAV.item6' | translate"></a></li>-->
+<!--		        <li><a href="welcome/contact" ng-bind="'NAV.item7' | translate"></a></li>-->
+<!--		        <li><a href="welcome/news" ng-bind="'NAV.item8' | translate"></a></li>-->
+		    </ul>
+			<ul class="navigation col-md-10 col-md-offset-1 en selected">
+				<?php
+				foreach($navInfo as $nav){
+					?>
+					<?php
+					if($nav -> en=='true'){
+						?>
+						<li><a href="welcome/<?php echo $nav -> ctrl ;?>" ng-bind="'NAV.item<?php echo $nav -> id ;?>' | translate"></a></li>
+						<?php
+					}
+					;?>
+
+
+					<?php
+				}
+				?>
+				<!--		        <li><a href="welcome/index" ng-bind="'NAV.item1' | translate"></a></li>-->
+				<!--		        <li><a href="welcome/intro" ng-bind="'NAV.item2' | translate"></a></li>-->
+				<!--		        <li><a href="welcome/course" ng-bind="'NAV.item3' | translate"></a></li>-->
+				<!--		        <li><a href="welcome/team" ng-bind="'NAV.item4' | translate"></a></li>-->
+				<!--		        <li><a href="welcome/job" ng-bind="'NAV.item5' | translate"></a></li>-->
+				<!--		        <li><a href="welcome/question" ng-bind="'NAV.item6' | translate"></a></li>-->
+				<!--		        <li><a href="welcome/contact" ng-bind="'NAV.item7' | translate"></a></li>-->
+				<!--		        <li><a href="welcome/news" ng-bind="'NAV.item8' | translate"></a></li>-->
+			</ul>
 		</div>
 	</div>	
 </div>
@@ -108,12 +153,25 @@
 
 
 
-
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="js/angular-1.5.5.js"></script>
 <script src="js/angular-cookies.js"></script>
 <script src="js/angular-translate.min.js"></script>
 <script src="js/angular-translate-storage-cookie.js"></script>
 <script src="js/angular-translate-storage-local.js"></script>
+<script>
+	$(function(){
+		$('#btn-en').on('click',function(){
+			$('.ch').addClass('selected');
+			$('.en').removeClass('selected');
+		});
+		$('#btn-ch').on('click',function(){
+			$('.en').addClass('selected');
+			$('.ch').removeClass('selected');
+		});
+	});
+
+</script>
 <?php include 'i18n.php' ?>
 
 

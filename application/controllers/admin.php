@@ -13,6 +13,7 @@ class Admin extends CI_Controller {
         $this -> load -> model('faq_model');
         $this -> load -> model('contact_model');
         $this -> load -> model('activity_model');
+        $this -> load -> model('nav_model');
 
 	}
 
@@ -246,6 +247,20 @@ class Admin extends CI_Controller {
               'contact' => $result
             );
             $this -> load -> view('admin/contact-mgr',$data);
+        }
+
+    }
+
+    public function nav_mgr()
+    {
+        $result = $this -> nav_model -> get_all();
+
+        if($result)
+        {
+            $data = array(
+                'nav' => $result
+            );
+            $this -> load -> view('admin/nav-mgr',$data);
         }
 
     }
@@ -884,36 +899,27 @@ class Admin extends CI_Controller {
     }
 
 
-    // public function news_mgr()
-    // {
-    //     $this -> load -> model('activity_model');
-    //     $result = $this -> activity_model -> get_all();
+     public function update_nav_ch()
+     {
+         $ch_id = $this -> input -> get('ch_id');
+         $ch_show = $this -> input -> get('ch_show');
+         $row = $this -> nav_model -> update_nav_ch($ch_id,$ch_show);
+         if($row>0){
+             redirect('admin/nav_mgr');
+         }
 
-    //     if($result)
-    //     {
-    //         $data = array(
-    //           'activityInfo' => $result
-    //         );
-    //         $this -> load -> view('admin/news-mgr',$data);
-    //     }
+     }
 
-    // }
+    public function update_nav_en()
+    {
+        $en_id = $this -> input -> get('en_id');
+        $en_show = $this -> input -> get('en_show');
+        $row = $this -> nav_model -> update_nav_en($en_id,$en_show);
+        if($row>0){
+            redirect('admin/nav_mgr');
+        }
 
-
-
-
-
-
-
-    
-
-	
-
- 
-
-
-
-    
+    }
 
 
 
@@ -929,7 +935,24 @@ class Admin extends CI_Controller {
 
 
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
