@@ -24,6 +24,9 @@
         .hidden{
             display: none;
         }
+        .list{
+            margin-top: 25px;
+        }
     </style>
 </head>
 <body>
@@ -48,13 +51,13 @@
             <div class="am-u-sm-12 am-u-md-6">
                 <div class="am-btn-toolbar">
                     <div class="am-btn-group am-btn-group-xs">
-                        <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span><a href="admin/add_admin"> 新增</a></button>
+<!--                        <button type="button" class="am-btn am-btn-default add"><span class="am-icon-plus"></span><a href="admin/add_admin"> 新增</a></button>-->
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="am-g">
+        <div class="am-g list">
 <!--            <form action="admin/update_nav" method="post">-->
                 <div class="am-u-sm-12">
                     <table class="am-table am-table-striped am-table-hover table-main">
@@ -84,10 +87,10 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="am-u-sm-8 am-u-md-6 am-u-end col-end">
-                    <button type="submit" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
-                    <button type="button" class="am-btn am-btn-primary am-btn-xs" id="btn-return">放弃保存</button>
-                </div>
+<!--                <div class="am-u-sm-8 am-u-md-6 am-u-end col-end">-->
+<!--                    <button type="submit" class="am-btn am-btn-primary am-btn-xs">提交保存</button>-->
+<!--                    <button type="button" class="am-btn am-btn-primary am-btn-xs" id="btn-return">放弃保存</button>-->
+<!--                </div>-->
 <!--            </form>-->
         </div>
     </div>
