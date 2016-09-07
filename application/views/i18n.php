@@ -58,13 +58,13 @@ var translationsEN = {
 var translationsCHN = {
   NAV:{
     'item1':'<?php echo $nav[0] -> name_ch?>',
-    'item2':'<?php echo $nav[1] -> name_ch?>',
-    'item3':'<?php echo $nav[2] -> name_ch?>',
-    'item4':'<?php echo $nav[3] -> name_ch?>',
-    'item5':'<?php echo $nav[4] -> name_ch?>',
-    'item6':'<?php echo $nav[5] -> name_ch?>',
-    'item7':'<?php echo $nav[6] -> name_ch?>',
-    'item8':'<?php echo $nav[7] -> name_ch?>',
+    'item2':'<?php echo $nav[1] -> name_en?>',
+    'item3':'<?php echo $nav[2] -> name_en?>',
+    'item4':'<?php echo $nav[3] -> name_en?>',
+    'item5':'<?php echo $nav[4] -> name_en?>',
+    'item6':'<?php echo $nav[5] -> name_en?>',
+    'item7':'<?php echo $nav[6] -> name_en?>',
+    'item8':'<?php echo $nav[7] -> name_en?>',
   },
   Features:{
     <?php

@@ -16,8 +16,6 @@ class Welcome extends CI_Controller {
 		$this -> load -> model('footer_model');
 		$this -> load -> model('i18n_model');
 		$this -> i18n();
-		$this -> load -> model('nav_model');
-
 
 	}
 
@@ -43,13 +41,11 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		//$this -> i18n();
-		$result2 = $this -> nav_model -> get_all();
-		$result1 = $this -> footer_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all();
 		$result = $this -> index_model -> get_all();
 		$data = array(
 			//尾部
-			'navInfo' => $result2,
-			'footerInfo' => $result1,
+			'footerInfo' => $result1,				
 			'indexInfo' => $result
 		);	 
 		$this -> load -> view('index',$data);
@@ -58,11 +54,9 @@ class Welcome extends CI_Controller {
 
 	public function intro()
 	{
-		$result2 = $this -> nav_model -> get_all();
-		$result1 = $this -> footer_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all(); 
     	$data = array(
 			//尾部
-			'navInfo' => $result2,
 			'footerInfo' => $result1
 		); 
 		$this -> load -> view('intro', $data);
@@ -71,12 +65,10 @@ class Welcome extends CI_Controller {
 
 	public function course()
 	{
-		$result2 = $this -> nav_model -> get_all();
-		$result1 = $this -> footer_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all(); 
 		$result = $this -> course_model -> get_all();
 		$data = array(
 			//尾部
-			'navInfo' => $result2,
 			'footerInfo' => $result1,
 			'courseInfo' => $result
 		);		
@@ -87,11 +79,9 @@ class Welcome extends CI_Controller {
 
 	public function team()
 	{
-		$result2 = $this -> nav_model -> get_all();
-		$result1 = $this -> footer_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all(); 
     	$result = $this -> team_model -> get_all();
     	$data = array(
-			'navInfo' => $result2,
 			'footerInfo' => $result1,
     		'member' => $result
 		);
@@ -102,12 +92,10 @@ class Welcome extends CI_Controller {
 
 	public function job()
 	{
-		$result2 = $this -> nav_model -> get_all();
-		$result1 = $this -> footer_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all(); 
 		$result = $this -> job_model -> get_all();
 		$data = array(
 			//尾部
-			'navInfo' => $result2,
 			'footerInfo' => $result1,
 			'jobInfo' => $result
 		);			
@@ -117,11 +105,9 @@ class Welcome extends CI_Controller {
 
 	public function question()
 	{
-		$result2 = $this -> nav_model -> get_all();
-		$result1 = $this -> footer_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all(); 
 		$result = $this -> faq_model -> get_all();
 		$data = array(
-			'navInfo' => $result2,
 			'footerInfo' => $result1,
 			'faqInfo' => $result
 		);     
@@ -131,13 +117,11 @@ class Welcome extends CI_Controller {
 
 	public function contact()
 	{
-		$result2 = $this -> nav_model -> get_all();
-		$result1 = $this -> footer_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all();
 		$result = $this -> contact_model -> get_all();
 
 		$data = array(
 			//尾部
-			'navInfo' => $result2,
 			'footerInfo' => $result1,	
 			'contactInfo' => $result
 		);
@@ -174,11 +158,9 @@ class Welcome extends CI_Controller {
 		$result = $this -> activity_model -> get_news_by_page($config['per_page'],$offset);
      
 		
-    	$result1 = $this -> footer_model -> get_all();
-		$result2 = $this -> nav_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all(); 
 		//$result = $this -> activity_model -> get_all();
 		$data = array(
-			'navInfo' => $result2,
 			'footerInfo' => $result1,
 			'activityInfo' => $result,
 			'news_total' => $news_count
@@ -190,11 +172,9 @@ class Welcome extends CI_Controller {
 
 	public function article($activity_id)
 	{
-		$result2 = $this -> nav_model -> get_all();
 		$result1 = $this -> footer_model -> get_all();
 		$result = $this -> activity_model -> get_by_id($activity_id);
 		$data = array(
-				'navInfo' => $result2,
 				'footerInfo' => $result1,
 				'activity' => $result
 		);
@@ -204,21 +184,5 @@ class Welcome extends CI_Controller {
 		//$this -> load -> view('article',array('activity' => $row));
 
 	}
-//	public function english()
-//	{
-//		$result2 = $this -> nav_model -> get_all();
-//		$result1 = $this -> footer_model -> get_all();
-//		$result = $this -> activity_model -> get_by_id($activity_id);
-//		$data = array(
-//				'navInfo' => $result2,
-//				'footerInfo' => $result1,
-//				'activity' => $result
-//		);
-//		$this -> load -> view('article', $data);
-//		//$this -> input -> get('activity_id');
-//		//$row = $this -> activity_model -> get_by_id($activity_id);
-//		//$this -> load -> view('article',array('activity' => $row));
-//
-//	}
 
 }

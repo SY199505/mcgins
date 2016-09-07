@@ -10,7 +10,7 @@ class Contact_model extends CI_Model {
 
     }
 
-    public function update_contact($id, $tel, $mail, $website, $phone, $wechat, $addr, $QR){
+    public function update_contact($id, $tel, $mail, $website, $phone, $wechat, $addr){
         $this -> db -> where('webinfo_id', $id);
         $this -> db -> update('t_webinfo', array(
             'webinfo_tel' => $tel,
@@ -18,8 +18,8 @@ class Contact_model extends CI_Model {
             'webinfo_website' => $website,
             'webinfo_phone' => $phone,
             'webinfo_wechat' => $wechat,
-            'webinfo_addr' => $addr,
-            'webinfo_QR' => $QR
+            'webinfo_addr' => $addr
+
         ));
         return $this -> db -> affected_rows();
     }

@@ -13,7 +13,6 @@ class Admin extends CI_Controller {
         $this -> load -> model('faq_model');
         $this -> load -> model('contact_model');
         $this -> load -> model('activity_model');
-        $this -> load -> model('nav_model');
 
 	}
 
@@ -247,20 +246,6 @@ class Admin extends CI_Controller {
               'contact' => $result
             );
             $this -> load -> view('admin/contact-mgr',$data);
-        }
-
-    }
-
-    public function nav_mgr()
-    {
-        $result = $this -> nav_model -> get_all();
-
-        if($result)
-        {
-            $data = array(
-                'nav' => $result
-            );
-            $this -> load -> view('admin/nav-mgr',$data);
         }
 
     }
@@ -706,26 +691,6 @@ class Admin extends CI_Controller {
         $phone = $this -> input -> post('phone');
         $wechat = $this -> input -> post('wechat');
         $addr = $this -> input -> post('addr');
-        /*$QR = $this -> input -> post('')
-        $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '3072';
-        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
-        $this -> load -> library('upload', $config);
-        $this -> upload -> do_upload('news_QR');
-        $upload_data = $this -> upload -> data();
-        $photo_url = 'uploads/'.$upload_data['file_name'];
-
-
-
-        if ( $upload_data['file_size'] > 0 ) {
-            //数据库中存photo的路径
-            $photo_url = 'uploads/'.$upload_data['file_name'];
-        }else{
-            //如果不上传图片,则使用默认图片
-            $photo_url = $photo_old_url;
-        }*/
-
         $row = $this -> contact_model -> update_contact($id, $tel, $mail, $website, $phone, $wechat, $addr);
         // echo $row;
         // die();
@@ -919,27 +884,20 @@ class Admin extends CI_Controller {
     }
 
 
-     public function update_nav_ch()
-     {
-         $ch_id = $this -> input -> get('ch_id');
-         $ch_show = $this -> input -> get('ch_show');
-         $row = $this -> nav_model -> update_nav_ch($ch_id,$ch_show);
-         if($row>0){
-             redirect('admin/nav_mgr');
-         }
+    // public function news_mgr()
+    // {
+    //     $this -> load -> model('activity_model');
+    //     $result = $this -> activity_model -> get_all();
 
-     }
+    //     if($result)
+    //     {
+    //         $data = array(
+    //           'activityInfo' => $result
+    //         );
+    //         $this -> load -> view('admin/news-mgr',$data);
+    //     }
 
-    public function update_nav_en()
-    {
-        $en_id = $this -> input -> get('en_id');
-        $en_show = $this -> input -> get('en_show');
-        $row = $this -> nav_model -> update_nav_en($en_id,$en_show);
-        if($row>0){
-            redirect('admin/nav_mgr');
-        }
-
-    }
+    // }
 
 
 
@@ -947,10 +905,15 @@ class Admin extends CI_Controller {
 
 
 
+    
+
+	
+
+ 
 
 
 
-
+    
 
 
 
@@ -966,13 +929,7 @@ class Admin extends CI_Controller {
 
 
 
-
-
-
-
-
-
-
+	
 
 
 
