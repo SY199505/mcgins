@@ -26,15 +26,13 @@ class Welcome extends CI_Controller {
 		$featuresInfo = $this -> i18n_model -> get_all_features();
 		$aboutUsInfo = $this -> i18n_model -> get_aboutUs();
 		//$contactInfo = $this -> i18n_model -> get_all();
-
-		
+		$navInfo = $this -> i18n_model -> get_nav();
 
 		$data = array(
 			'features' => $featuresInfo,
-			'aboutUs' => $aboutUsInfo
+			'aboutUs' => $aboutUsInfo,
+			'nav' => $navInfo
 		);
-		
-
 		$this -> load -> view('i18n',$data);
 
 	}

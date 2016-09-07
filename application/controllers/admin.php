@@ -691,6 +691,26 @@ class Admin extends CI_Controller {
         $phone = $this -> input -> post('phone');
         $wechat = $this -> input -> post('wechat');
         $addr = $this -> input -> post('addr');
+        /*$QR = $this -> input -> post('')
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '3072';
+        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
+        $this -> load -> library('upload', $config);
+        $this -> upload -> do_upload('news_QR');
+        $upload_data = $this -> upload -> data();
+        $photo_url = 'uploads/'.$upload_data['file_name'];
+
+
+
+        if ( $upload_data['file_size'] > 0 ) {
+            //数据库中存photo的路径
+            $photo_url = 'uploads/'.$upload_data['file_name'];
+        }else{
+            //如果不上传图片,则使用默认图片
+            $photo_url = $photo_old_url;
+        }*/
+
         $row = $this -> contact_model -> update_contact($id, $tel, $mail, $website, $phone, $wechat, $addr);
         // echo $row;
         // die();

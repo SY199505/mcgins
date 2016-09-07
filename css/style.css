@@ -195,7 +195,9 @@ background: rgb(66, 133, 244);
 .link:visited{
 	background: #f00;
 }
-
+.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse{
+	max-height: 100%;
+}
 
 
 

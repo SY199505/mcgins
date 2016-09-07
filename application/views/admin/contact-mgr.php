@@ -113,12 +113,30 @@
                 二维码
               </div>
               <div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
-<!--                <input type="text" class="am-input-sm" name="QR" value="--><?php //echo $contact[0] -> webinfo_QR ;?><!--">-->
+                <input type="hidden" class="am-input-sm" name="QR" value="<?php echo $contact[0] -> webinfo_QR ;?>">
                 <img src="<?php echo $contact[0] -> webinfo_QR ;?>" alt="">
               </div>
             </div>
-
-
+<!-- 图片上传-->
+            <div class="am-g am-margin-top">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right">新闻主图</div>
+              <div class="am-u-sm-8 am-u-md-4 am-u-end">
+                <!--文件上传-->
+                <div class="am-form-group am-form-file">
+                  <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                    <i class="am-icon-cloud-upload"></i> 选择要上传的图片</button>
+                  <input id="doc-form-file" type="file" multiple name="news_QR">
+                  <!--图片预览-->
+                  <br/>
+                  <small class="am-badge am-badge-success am-radius">预览图</small>
+                  <div id="imgdiv"><img id="imgShow" width="100%" height="100%" /></div>
+                  <!--图片预览-->
+                </div>
+                <div id="file-list"></div>
+                <!--文件上传-->
+              </div>
+            </div>
+<!--                   -->
             <div class="am-g am-margin-top">
               <div class="am-u-sm-4 am-u-md-3 am-text-right">
                 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -182,5 +200,29 @@
     }
   });
 </script>
+
+  <!--图片上传预览-->
+  <script src="js/uploadPreview.min.js"></script>
+<script>
+  window.onload = function () {
+    new uploadPreview({ UpBtn: "doc-form-file", DivShow: "imgdiv", ImgShow: "imgShow" });
+  }
+</script>
+<!--图片上传预览-->
+
+<!--图片上传-->
+<script>
+  $(function() {
+
+    $('#doc-form-file').on('change', function() {
+      var fileNames = '';
+      $.each(this.files, function() {
+        fileNames += '<span class="am-badge">' + this.name + '</span> ';
+      });
+      $('#file-list').html(fileNames);
+    });
+  });
+</script>
+<!--图片上传-->
 </body>
 </html>

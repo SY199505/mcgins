@@ -14,6 +14,12 @@ class I18n_model extends CI_Model {
         return $this -> db -> get('t_aboutUs') -> result();
     }
 
+    public function get_nav()
+    {
+        return $this -> db -> get('t_nav') -> result();
+    }
+
+
     
 
 

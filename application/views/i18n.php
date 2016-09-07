@@ -16,14 +16,14 @@ var myApp = angular.module('myApp',['ngCookies','pascalprecht.translate']);
 
 var translationsEN = {
   NAV:{
-    'item1':'Index',
-    'item2':'About Us',
-    'item3':'Course',
-    'item4':'Team',
-    'item5':'Recruit',
-    'item6':'FAQ',
-    'item7':'Contact',
-    'item8':'News',
+    'item1':'<?php echo $nav[0] -> name_en?>',
+    'item2':'<?php echo $nav[1] -> name_en?>',
+    'item3':'<?php echo $nav[2] -> name_en?>',
+    'item4':'<?php echo $nav[3] -> name_en?>',
+    'item5':'<?php echo $nav[4] -> name_en?>',
+    'item6':'<?php echo $nav[5] -> name_en?>',
+    'item7':'<?php echo $nav[6] -> name_en?>',
+    'item8':'<?php echo $nav[7] -> name_en?>',
   },
   Features:{
     <?php
@@ -57,14 +57,14 @@ var translationsEN = {
 
 var translationsCHN = {
   NAV:{
-    'item1':'首页',
-    'item2':'关于我们',
-    'item3':'课程体系',
-    'item4':'麦金思团队',
-    'item5':'招聘信息',
-    'item6':'常见问题',
-    'item7':'联系我们',
-    'item8':'最新动态',
+    'item1':'<?php echo $nav[0] -> name_ch?>',
+    'item2':'<?php echo $nav[1] -> name_ch?>',
+    'item3':'<?php echo $nav[2] -> name_ch?>',
+    'item4':'<?php echo $nav[3] -> name_ch?>',
+    'item5':'<?php echo $nav[4] -> name_ch?>',
+    'item6':'<?php echo $nav[5] -> name_ch?>',
+    'item7':'<?php echo $nav[6] -> name_ch?>',
+    'item8':'<?php echo $nav[7] -> name_ch?>',
   },
   Features:{
     <?php
