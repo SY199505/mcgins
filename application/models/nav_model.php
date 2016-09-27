@@ -10,23 +10,46 @@ class Nav_model extends CI_Model {
 
     }
 
-    public function update_nav_ch($ch_id,$ch_show){
-        $this -> db -> where('id',$ch_id);
+    public function update_show($id,$isShow)
+    {
+    	$this -> db -> where('nav_id', $id);
         $this -> db -> update('t_nav', array(
-            'id' => $ch_id,
-            'ch' => $ch_show
+            'isShow' => $isShow
         ));
         return $this -> db -> affected_rows();
     }
 
-    public function update_nav_en($en_id,$en_show){
-        $this -> db -> where('id',$en_id);
-        $this -> db -> update('t_nav', array(
-            'id' => $en_id,
-            'en' => $en_show
-        ));
-        return $this -> db -> affected_rows();
-    }
+    // public function get_by_id($course_id)
+    // {
+    //    return $this->db->get_where('t_course', array('id' => $course_id)) -> row();
 
+    // }
 
+    // public function save_course($levels, $age, $courses, $intro){
+    //     $this -> db -> insert('t_course', array(
+    //         'levels' => $levels,
+    //         'age' => $age,
+    //         'courses' => $courses,
+    //         'intro' => $intro
+    //     ));
+    //     return $this -> db -> affected_rows();
+    // }
+
+    // public function update_course($course_id,$levels, $age, $courses, $intro){
+    //     $this -> db -> where('id', $course_id);
+    //     $this -> db -> update('t_course', array(
+    //         'levels' => $levels,
+    //         'age' => $age,
+    //         'courses' => $courses,
+    //         'intro' => $intro
+    //     ));
+    //     return $this -> db -> affected_rows();
+    // }
+
+    // public function delete_course($course_id)
+    // {
+    //     $this->db->delete('t_course', array('id' => $course_id));
+    //     return $this -> db -> affected_rows();
+
+    // }
 }

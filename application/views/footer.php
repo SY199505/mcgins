@@ -49,7 +49,7 @@
                         {{'ADDRESS'|translate}}
                     </div>
                     <div class="QR col-md-4">
-                        <img src="<?php foreach($footerInfo as $key=>$value) {echo $value -> webinfo_QR;}?>" alt="">
+                        <img class="center-block" src="<?php foreach($footerInfo as $key=>$value) {echo $value -> webinfo_QR;}?>" alt="">
                     </div>
                 </div>
                 

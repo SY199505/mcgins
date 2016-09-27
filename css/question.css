@@ -15,7 +15,7 @@
 }
 
 span {
-	display: block;
+	/*display: block;*/
 	cursor: pointer;
 }
 
@@ -23,7 +23,7 @@ span {
 
 	#question{
 		padding: 0 0 20px 0;
-		margin-top: 20px;
+		margin-top: 70px;
 	}
 	
 }

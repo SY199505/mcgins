@@ -16,14 +16,15 @@ var myApp = angular.module('myApp',['ngCookies','pascalprecht.translate']);
 
 var translationsEN = {
   NAV:{
-    'item1':'Index',
-    'item2':'About Us',
-    'item3':'Course',
-    'item4':'Team',
-    'item5':'Recruit',
-    'item6':'FAQ',
-    'item7':'Contact',
-    'item8':'News',
+    <?php
+      $i = 0;
+      foreach ($enNavs as $nav) {
+        $i++;
+    ?>
+      'item<?php echo $i; ?>':{'title<?php echo $i; ?>':'<?php echo $nav -> nav_name; ?>','isShow':'<?php echo $nav -> isShow; ?>'},
+    <?php
+      }
+    ?>
   },
   Features:{
     <?php
@@ -57,14 +58,15 @@ var translationsEN = {
 
 var translationsCHN = {
   NAV:{
-    'item1':'首页',
-    'item2':'关于我们',
-    'item3':'课程体系',
-    'item4':'麦金思团队',
-    'item5':'招聘信息',
-    'item6':'常见问题',
-    'item7':'联系我们',
-    'item8':'最新动态',
+    <?php
+        $i = 0;
+      foreach ($chnNavs as $nav) {
+        $i++
+    ?>
+      'item<?php echo $i; ?>':{'title<?php echo $i; ?>':'<?php echo $nav -> nav_name; ?>','isShow':'<?php echo $nav -> isShow; ?>'},
+    <?php
+      }
+    ?>
   },
   Features:{
     <?php

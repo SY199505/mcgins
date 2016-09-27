@@ -2,23 +2,30 @@
 
 class Welcome extends CI_Controller {
 
-	function __construct() {
+	function __construct()
+	{
 		parent::__construct();
-        $this -> load -> model('admin_model');
-		$this -> load -> model('index_model');
-		$this -> load -> model('intro_model');
-		$this -> load -> model('course_model');
-    	$this -> load -> model('team_model');
-		$this -> load -> model('job_model');
-		$this -> load -> model('faq_model');
-     	$this -> load -> model('contact_model');
-		$this -> load -> model('activity_model');
-		$this -> load -> model('footer_model');
-		$this -> load -> model('i18n_model');
-		$this -> i18n();
-		$this -> load -> model('nav_model');
+		$this->load->model('admin_model');
+		$this->load->model('index_model');
+		$this->load->model('carousel_model');
+		$this->load->model('intro_model');
+		$this->load->model('course_model');
+		$this->load->model('team_model');
+		$this->load->model('job_model');
+		$this->load->model('faq_model');
+		$this->load->model('contact_model');
+		$this->load->model('activity_model');
+		$this->load->model('footer_model');
+		$this->load->model('i18n_model');
+		$this->i18n();
+		$this->load->model('nav_model');
+	}
 
-
+	public function pre($data)
+	{
+		echo "<pre>";
+		var_dump($data);
+		echo "</pre>";
 	}
 
 
@@ -27,16 +34,22 @@ class Welcome extends CI_Controller {
 
 		$featuresInfo = $this -> i18n_model -> get_all_features();
 		$aboutUsInfo = $this -> i18n_model -> get_aboutUs();
+		$navInfoEn = $this -> i18n_model -> get_Info_isShow_en();
+		$navInfoChn = $this -> i18n_model -> get_Info_isShow_ch();
+		// $this -> pre($navInfoEn);
+		// $this -> pre($navInfoChn);
+		// die();
+
 		//$contactInfo = $this -> i18n_model -> get_all();
 
-		
 
 		$data = array(
 			'features' => $featuresInfo,
-			'aboutUs' => $aboutUsInfo
-		);
-		
+			'aboutUs' => $aboutUsInfo,
+			'enNavs' => $navInfoEn,
+			'chnNavs' => $navInfoChn
 
+		);
 		$this -> load -> view('i18n',$data);
 
 	}
@@ -45,13 +58,13 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		//$this -> i18n();
-		$result2 = $this -> nav_model -> get_all();
-		$result1 = $this -> footer_model -> get_all();
+		$result2 = $this -> carousel_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all();
 		$result = $this -> index_model -> get_all();
 		$data = array(
 			//尾部
-			'navInfo' => $result2,
-			'footerInfo' => $result1,
+			'carouselInfo' => $result2,
+			'footerInfo' => $result1,				
 			'indexInfo' => $result
 		);	 
 		$this -> load -> view('index',$data);
@@ -60,25 +73,21 @@ class Welcome extends CI_Controller {
 
 	public function intro()
 	{
-		$result2 = $this -> nav_model -> get_all();
-		$result1 = $this -> footer_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all();
     	$data = array(
 			//尾部
-			'navInfo' => $result2,
 			'footerInfo' => $result1
-		); 
+		);
 		$this -> load -> view('intro', $data);
 
 	}
 
 	public function course()
 	{
-		$result2 = $this -> nav_model -> get_all();
-		$result1 = $this -> footer_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all(); 
 		$result = $this -> course_model -> get_all();
 		$data = array(
 			//尾部
-			'navInfo' => $result2,
 			'footerInfo' => $result1,
 			'courseInfo' => $result
 		);		
@@ -89,11 +98,9 @@ class Welcome extends CI_Controller {
 
 	public function team()
 	{
-		$result2 = $this -> nav_model -> get_all();
-		$result1 = $this -> footer_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all(); 
     	$result = $this -> team_model -> get_all();
     	$data = array(
-			'navInfo' => $result2,
 			'footerInfo' => $result1,
     		'member' => $result
 		);
@@ -104,12 +111,10 @@ class Welcome extends CI_Controller {
 
 	public function job()
 	{
-		$result2 = $this -> nav_model -> get_all();
-		$result1 = $this -> footer_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all(); 
 		$result = $this -> job_model -> get_all();
 		$data = array(
 			//尾部
-			'navInfo' => $result2,
 			'footerInfo' => $result1,
 			'jobInfo' => $result
 		);			
@@ -119,11 +124,9 @@ class Welcome extends CI_Controller {
 
 	public function question()
 	{
-		$result2 = $this -> nav_model -> get_all();
-		$result1 = $this -> footer_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all(); 
 		$result = $this -> faq_model -> get_all();
 		$data = array(
-			'navInfo' => $result2,
 			'footerInfo' => $result1,
 			'faqInfo' => $result
 		);     
@@ -133,13 +136,11 @@ class Welcome extends CI_Controller {
 
 	public function contact()
 	{
-		$result2 = $this -> nav_model -> get_all();
-		$result1 = $this -> footer_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all();
 		$result = $this -> contact_model -> get_all();
 
 		$data = array(
 			//尾部
-			'navInfo' => $result2,
 			'footerInfo' => $result1,	
 			'contactInfo' => $result
 		);
@@ -176,11 +177,9 @@ class Welcome extends CI_Controller {
 		$result = $this -> activity_model -> get_news_by_page($config['per_page'],$offset);
      
 		
-    	$result1 = $this -> footer_model -> get_all();
-		$result2 = $this -> nav_model -> get_all();
+    	$result1 = $this -> footer_model -> get_all(); 
 		//$result = $this -> activity_model -> get_all();
 		$data = array(
-			'navInfo' => $result2,
 			'footerInfo' => $result1,
 			'activityInfo' => $result,
 			'news_total' => $news_count

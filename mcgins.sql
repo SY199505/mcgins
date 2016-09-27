@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2016-09-06 08:59:06
+Date: 2016-09-14 17:57:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,7 +45,7 @@ CREATE TABLE `t_activity` (
   `activity_img` varchar(255) DEFAULT NULL,
   `add_time` datetime DEFAULT NULL,
   PRIMARY KEY (`activity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_activity
@@ -135,7 +135,7 @@ CREATE TABLE `t_features` (
   `features_en` text,
   `add_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`features_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_features
@@ -155,23 +155,18 @@ INSERT INTO `t_features` VALUES ('8', '特色八', 'Features 8', '权威测评�
 DROP TABLE IF EXISTS `t_index`;
 CREATE TABLE `t_index` (
   `index_id` int(11) NOT NULL AUTO_INCREMENT,
-  `index_ch` varchar(255) DEFAULT NULL,
-  `index_feature` varchar(255) DEFAULT NULL,
   `index_carousel` varchar(255) DEFAULT NULL,
+  `index_feature_bg` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`index_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_index
 -- ----------------------------
-INSERT INTO `t_index` VALUES ('1', '特色一', '首家引进被美国英语教育界公认，并获得普遍赞誉的“最适合中国儿童英语学习”的原版教材。', 'img/banner1.jpg');
-INSERT INTO `t_index` VALUES ('2', '特色二', '由美国TESL硕士、K-12 ESL\r美国教育部注册教师、曾任教\r于美国公立学校、并曾担任美\r国加州知名培训机构校区总监\r的Ms.Laura，亲自督导教学、\r培训师资。', 'img/banner2.jpg');
-INSERT INTO `t_index` VALUES ('3', '特色三', '美国英语教育专家团队全程提供教学支持，实时更新来自美国最新的教学资源与方法。', 'img/banner3.jpg');
-INSERT INTO `t_index` VALUES ('4', '特色四', '教师团队均经过严格选拔、考核、培训，拥有TESL青少儿英语教师资格，个人教学能力均达到麦金思教学标准。', 'img/banner4.jpg');
-INSERT INTO `t_index` VALUES ('5', '特色五', '确保轻松应对在校英语\r考试，并无缝对接美国中小\r学课程，为考取名校、出国\r留学、出国考试打牢基础 。', null);
-INSERT INTO `t_index` VALUES ('6', '特色六', ' 独家特色美国游学、文化\r体验项目，零距离感受真正美\r国文化。', null);
-INSERT INTO `t_index` VALUES ('7', '特色七', '采用美国青少儿教育大纲\r提出的“启发式”“探索式”\r教学法，培养学生独立学习和\r辩证思维的能力。', null);
-INSERT INTO `t_index` VALUES ('8', '特色八', '权威测评体系，为每个孩\r子量身定制专属英语学习规划。', null);
+INSERT INTO `t_index` VALUES ('1', 'uploads/20160913171351_53736.jpg', 'uploads/20160913195352_21618.jpg');
+INSERT INTO `t_index` VALUES ('2', 'img/banner2.jpg', null);
+INSERT INTO `t_index` VALUES ('3', 'img/banner3.jpg', null);
+INSERT INTO `t_index` VALUES ('4', 'img/banner4.jpg', null);
 
 -- ----------------------------
 -- Table structure for `t_job`
@@ -182,7 +177,7 @@ CREATE TABLE `t_job` (
   `job_title` varchar(255) DEFAULT NULL,
   `job_content` text,
   PRIMARY KEY (`job_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_job
@@ -192,6 +187,39 @@ INSERT INTO `t_job` VALUES ('2', '青少儿英语教师 ', '<p>\r\n	<strong>岗�
 INSERT INTO `t_job` VALUES ('3', '青少儿英语教师 ', '<p>\r\n	<strong>任职资格</strong><strong></strong>\r\n</p>\r\n<p>\r\n	1.热爱英语教学，了解儿童身心发展；\r\n</p>\r\n<p>\r\n	2.英语口语表达流畅，语感良好，发音标准；\r\n</p>\r\n<p>\r\n	3.具备责任心、爱心、耐心、亲和力；\r\n</p>\r\n<p>\r\n	4.本科以上英语、师范或教育专业，至少2年以上全职少儿英语教学经验，英语水平相当于专业4级或以上优先考虑；\r\n</p>\r\n<p>\r\n	5.有团队协作精神，良好的沟通表达能力，有服务意识，进取心，很强的组织协调能力；\r\n</p>\r\n<p>\r\n	6.可以适应弹性工作时间安排，如周末工作；\r\n</p>\r\n<p>\r\n	7.有学习钻研与创新意识，积极学习探索国际英语教学及儿童心理学前沿理论知识，并将其运用到工作中；\r\n</p>\r\n<p>\r\n	8.教学水平及课控能力突出，英语教育专业知识丰富，乐于分享\r\n</p>');
 INSERT INTO `t_job` VALUES ('4', '学习顾问 ', '<p>\r\n	<strong>岗位职责</strong><strong></strong>\r\n</p>\r\n<p>\r\n	1.日常教务教学管理；\r\n</p>\r\n<p>\r\n	2.为来电及上门咨询者详细解答问题、积极开展课程推荐、体验课程预约和报名签约\r\n</p>\r\n<p>\r\n	3.参与培训、教研和会议等活动；\r\n</p>\r\n<p>\r\n	4.对学生的英语学习进展给予专业反馈和建议；\r\n</p>\r\n<p>\r\n	5.负责与老师、学生、家长、主管的全面有效沟通，确保信息统一和客户满意度；\r\n</p>\r\n<p>\r\n	6.协同团队完成每月的销售指标；\r\n</p>\r\n<p>\r\n	7.组织参与市场推广等招生活动；\r\n</p>\r\n<p>\r\n	8.完成上级交付的其它工作任务安排；\r\n</p>');
 INSERT INTO `t_job` VALUES ('5', '学习顾问 ', '<p>\r\n	<strong>任职要求</strong><strong></strong>\r\n</p>\r\n<p>\r\n	1.大专以上学历，英语、教育、心理学专业，有与4-15岁青少年儿童工作经验者优先；\r\n</p>\r\n<p>\r\n	2.有亲和力，真诚，勤奋，负责，有爱心，踏实稳重，执行力强，善于思考总结，服务意识强，抗压能力强，沟通表达能力良好；\r\n</p>\r\n<p>\r\n	3.有教育或其他行业销售经验者优先；\r\n</p>\r\n<p>\r\n	4.熟练运用办公软件\r\n</p>');
+
+-- ----------------------------
+-- Table structure for `t_nav`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_nav`;
+CREATE TABLE `t_nav` (
+  `nav_id` int(11) NOT NULL AUTO_INCREMENT,
+  `nav_name` varchar(255) DEFAULT NULL,
+  `isShow` int(11) DEFAULT NULL,
+  `isEn` int(11) DEFAULT NULL,
+  `loadPage` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`nav_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_nav
+-- ----------------------------
+INSERT INTO `t_nav` VALUES ('1', 'Home', '1', '1', 'welcome/index');
+INSERT INTO `t_nav` VALUES ('2', 'About us', '1', '1', 'welcome/intro');
+INSERT INTO `t_nav` VALUES ('3', 'Course', '1', '1', 'welcome/course');
+INSERT INTO `t_nav` VALUES ('4', 'Team', '1', '1', 'welcome/team');
+INSERT INTO `t_nav` VALUES ('5', 'Recruitment', '1', '1', 'welcome/job');
+INSERT INTO `t_nav` VALUES ('6', 'FAQ', '0', '1', 'welcome/question');
+INSERT INTO `t_nav` VALUES ('7', 'Contact', '0', '1', 'welcome/contact');
+INSERT INTO `t_nav` VALUES ('8', 'News', '0', '1', 'welcome/news');
+INSERT INTO `t_nav` VALUES ('9', '首页', '1', '0', 'welcome/index');
+INSERT INTO `t_nav` VALUES ('10', '关于我们', '1', '0', 'welcome/intro');
+INSERT INTO `t_nav` VALUES ('11', '课程体系', '1', '0', 'welcome/course');
+INSERT INTO `t_nav` VALUES ('12', '麦金思团队', '1', '0', 'welcome/team');
+INSERT INTO `t_nav` VALUES ('13', '招聘信息', '1', '0', 'welcome/job');
+INSERT INTO `t_nav` VALUES ('14', '常见问题', '1', '0', 'welcome/question');
+INSERT INTO `t_nav` VALUES ('15', '联系我们', '1', '0', 'welcome/contact');
+INSERT INTO `t_nav` VALUES ('16', '最新动态', '1', '0', 'welcome/news');
 
 -- ----------------------------
 -- Table structure for `t_team`
@@ -209,7 +237,7 @@ CREATE TABLE `t_team` (
 -- ----------------------------
 -- Records of t_team
 -- ----------------------------
-INSERT INTO `t_team` VALUES ('1', '教学督导', 'Ms.Laura Zhou', 'uploads/20160901060823_22178.jpg', '美国TESL硕士， K-12 ESL美国教\r\n育部注册教师，曾任教于美国公立学校，\r\n曾任美国加州知名培训机构校区总监。她\r\n帮助过很多世界各地的移民家庭学习英语\r\n并适应美国生活，帮助中国孩子找到学习\r\n方法、提高综合英语水平和应试能力。她\r\n的学生小到2岁半，大到60岁。 Laura\r\n老师带领麦金思教学团队一起探究适合中\r\n国青少儿语言发展的教学模式和方法。她\r\n尊重孩子的自我塑造和学习能力。她的专\r\n业研究领域为英语学习风格和学习策略，\r\n及儿童发展学。她的教育理念是“用心育\r\n人的教师会改变孩子');
+INSERT INTO `t_team` VALUES ('1', '教学督导', 'Ms.Laura Zhou', 'uploads/20160913170636_16333.jpg', '美国TESL硕士， K-12 ESL美国教\r\n育部注册教师，曾任教于美国公立学校，\r\n曾任美国加州知名培训机构校区总监。她\r\n帮助过很多世界各地的移民家庭学习英语\r\n并适应美国生活，帮助中国孩子找到学习\r\n方法、提高综合英语水平和应试能力。她\r\n的学生小到2岁半，大到60岁。 Laura\r\n老师带领麦金思教学团队一起探究适合中\r\n国青少儿语言发展的教学模式和方法。她\r\n尊重孩子的自我塑造和学习能力。她的专\r\n业研究领域为英语学习风格和学习策略，\r\n及儿童发展学。她的教育理念是“用心育\r\n人的教师会改变孩子');
 INSERT INTO `t_team` VALUES ('2', '美国教育专家', 'Dr. Sandy Chan', 'uploads/20160901060850_56296.jpg', 'Sandy博士带领麦金思美国教研专家团队为我们精心挑选并实时更新最适合中国孩子的英语教学资源，为我们的教师团队提供培训和教学支持。Sandy博士及团队成员在国内外有着多年的英语教学经验，在美国从事TESL和课程教学方面的研究数年，指导过很多国内外优秀英语教师，深知中国孩子学习英语的特点，并在国内外重要学术期刊发表过许多有关英语教研方面的文章。Sandy博士的教育理念是“找到每个孩子身上的亮点，点亮他们的人生”。');
 INSERT INTO `t_team` VALUES ('3', '运营总监', 'Mr. Harris Zhang', 'uploads/20160901060901_47287.jpg', '本科就读于哈尔滨工业大学，持有美国工商管理硕士（MBA），美国会计与金融管理硕士，曾任职于美国和加拿大知名会计师事务所、企业战略咨询公司。他在北美工作期间，曾多次组织参与过扶持资助贫困儿童及家庭的计划，深知儿童教育的重要性。他决定投身于儿童教育事业，只为将最好的教育带给中国青少年儿童。');
 INSERT INTO `t_team` VALUES ('4', '核心成员', 'Dr. Sandy Chan', 'uploads/20160901060910_16462.jpg', 'Sandy博士带领麦金思美国教研专家团队为我们精心挑选并实时更新最适合中国孩子的英语教学资源，为我们的教师团队提供培训和教学支持。Sandy博士及团队成员在国内外有着多年的英语教学经验，在美国从事TESL和课程教学方面的研究数年，指导过很多国内外优秀英语教师，深知中国孩子学习英语的特点，并在国内外重要学术期刊发表过许多有关英语教研方面的文章。Sandy博士的教育理念是“找到每个孩子身上的亮点，点亮他们的人生”。');
@@ -227,10 +255,12 @@ CREATE TABLE `t_webinfo` (
   `webinfo_wechat` varchar(255) DEFAULT NULL,
   `webinfo_addr` varchar(255) DEFAULT NULL,
   `webinfo_QR` varchar(255) DEFAULT NULL,
+  `webinfo_longitude` double DEFAULT NULL,
+  `webinfo_latitude` double DEFAULT NULL,
   PRIMARY KEY (`webinfo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_webinfo
 -- ----------------------------
-INSERT INTO `t_webinfo` VALUES ('1', '0451-55157643', '19162839876@qq.com', 'www.mcgins.com', '13809764375', '86142083571', '黑龙江省哈尔滨市南岗哈西绥化路纳帕英郡S57(松雷中学斜对面，69路、83路纳帕英郡小区站)', 'img/QR code.jpg');
+INSERT INTO `t_webinfo` VALUES ('1', '0451-55157643', '19162839876@qq.com', 'www.mcgins.com', '13809764375', '86142083571', '黑龙江省哈尔滨市南岗哈西绥化路纳帕英郡S57(松雷中学斜对面，69路、83路纳帕英郡小区站)', 'uploads/20160910062633_76428.jpg', '126.600485', '45.691803');

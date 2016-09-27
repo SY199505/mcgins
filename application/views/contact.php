@@ -40,6 +40,8 @@
 		</div>
 	</div>
 </div>
+<?php //$longitude =$contactInfo -> webinfo_longitude ?>
+<?php //$latitude = $contactInfo -> webinfo_latitude ?>
 <!-- 尾部 -->
 <?php include 'footer.php' ?>
 <!-- 尾部结束 -->
@@ -48,10 +50,17 @@
 	<script type="text/javascript" src="js/jquery.goup.min.js"></script>
 	<script src="js/style.js"></script>
 	<script src="http://api.map.baidu.com/api?v=2.0&ak=AMt1vrxwTqGzf1I94PMx7K0u" type="text/javascript"></script>
+<?php
+
+
+
+;?>
 <script type="text/javascript">
   // 百度地图API功能
   var map = new BMap.Map("allmap");
-  var point = new BMap.Point(126.600002,45.691483);
+  var point = new BMap.Point(<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_longitude;} ?>
+		  ,<?php foreach($contactInfo as $key=>$value) {echo $value -> webinfo_latitude;} ?>
+  );
   map.centerAndZoom(point, 18);
   var marker = new BMap.Marker(point);  // 创建标注
   map.addOverlay(marker);               // 将标注添加到地图中

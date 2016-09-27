@@ -14,7 +14,8 @@ class Admin extends CI_Controller {
         $this -> load -> model('contact_model');
         $this -> load -> model('activity_model');
         $this -> load -> model('nav_model');
-
+        $this -> load -> model('i18n_model');
+        $this -> load -> model('carousel_model');
 	}
 
 	public function pre($data)
@@ -153,6 +154,46 @@ class Admin extends CI_Controller {
         }
 
     }
+    public function save_admin()
+    {
+        $admin_username = $this -> input -> post('admin_username');
+        $admin_password = $this -> input -> post('admin_password');
+
+
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '3072';
+        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
+
+        //图片上传操作
+        $this -> load -> library('upload', $config);
+        $this -> upload -> do_upload('admin_photo');
+        $upload_data = $this -> upload -> data();
+
+        if ( $upload_data['file_size'] > 0 ) {
+            //数据库中存photo的路径
+            $photo_url = 'uploads/'.$upload_data['file_name'];
+        }else{
+            //如果不上传图片,则使用默认图片
+            $photo_url = 'img/avatar.png';
+        }
+
+        $rows = $this -> admin_model -> save_admin_by_name_pwd_photo($admin_username,$admin_password, $photo_url);
+        if($rows > 0)
+        {
+            $data = array(
+            'info'=>'注册成功',
+            'url' => 'admin/admin_mgr'
+        );
+        $this -> load -> view('redirect-null',$data);
+        }
+        else
+        {
+
+        }
+
+
+    }
     public function index_mgr(){
         $this -> load -> model('index_model');
         $result = $this -> index_model -> get_all();
@@ -167,9 +208,12 @@ class Admin extends CI_Controller {
     public function intro_mgr(){
         $this -> load -> model('intro_model');
         $result = $this -> intro_model -> get_all();
+        $this -> load -> model('carousel_model');
+        $result1 = $this -> carousel_model -> get_all();
         if($result){
             $data = array(
-                'introInfo' => $result
+                'introInfo' => $result,
+                'carouselInfo' => $result1
             );
             $this -> load -> view('admin/intro-mgr', $data);
         }
@@ -250,24 +294,6 @@ class Admin extends CI_Controller {
         }
 
     }
-
-    public function nav_mgr()
-    {
-        $result = $this -> nav_model -> get_all();
-
-        if($result)
-        {
-            $data = array(
-                'nav' => $result
-            );
-            $this -> load -> view('admin/nav-mgr',$data);
-        }
-
-    }
-
-    
-
-
 
     /**
     *   @admin_mgr
@@ -410,6 +436,124 @@ class Admin extends CI_Controller {
             echo '修改信息失败!';
         }
     }
+    public function edit_feature_bg()
+    {
+        $this -> load -> model('carousel_model');
+
+        $result = $this -> carousel_model -> get_all();
+
+        if($result)
+        {
+            $data = array(
+                'carouselInfo' => $result
+            );
+            $this -> load -> view('admin/edit_feature_bg',$data);
+        }
+    }
+    public function update_feature_bg()
+    {
+        $feature_bg_old_url = $this -> input -> post('feature_bg_old_url');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '3072';
+        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
+        $this -> load -> library('upload', $config);
+        $this -> upload -> do_upload('new_feature_bg');
+        $upload_data = $this -> upload -> data();
+        $feature_bg_url = 'uploads/'.$upload_data['file_name'];
+        if ( $upload_data['file_size'] > 0 ) {
+            //数据库中存photo的路径
+            $feature_bg_url = 'uploads/'.$upload_data['file_name'];
+        }else{
+            //如果不上传图片,则使用默认图片
+            $feature_bg_url = $feature_bg_old_url;
+        }
+
+        $row = $this -> carousel_model -> update_feature_bg($feature_bg_url);
+        if($row > 0){
+            redirect('admin/intro_mgr');
+        }else{
+            echo '未修改或修改失败！';
+        }
+    }
+    public function edit_carousel()
+    {
+        $id = $this -> uri -> segment(3);
+        $this -> load -> model('carousel_model');
+
+        $result = $this -> carousel_model -> get_by_id($id);
+
+        if($result)
+        {
+            $data = array(
+                'carouselInfo' => $result
+            );
+            $this -> load -> view('admin/update-intro',$data);
+        }
+
+    }
+
+    public function update_carousel()
+    {
+        $id = $this -> input -> post('carousel_id');
+        $carousel_old_url = $this -> input -> post('carousel_old_url');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '3072';
+        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
+        $this -> load -> library('upload', $config);
+        $this -> upload -> do_upload('new_carousel');
+        $upload_data = $this -> upload -> data();
+        $carousel_url = 'uploads/'.$upload_data['file_name'];
+        if ( $upload_data['file_size'] > 0 ) {
+            //数据库中存photo的路径
+            $carousel_url = 'uploads/'.$upload_data['file_name'];
+        }else{
+            //如果不上传图片,则使用默认图片
+            $carousel_url = $carousel_old_url;
+        }
+
+        $row = $this -> carousel_model -> update_carousel($id, $carousel_url);
+        if($row > 0){
+            redirect('admin/intro_mgr');
+        }else{
+            echo '未修改或修改失败！';
+        }
+    }
+    public function add_carousel()
+    {
+        $this -> load -> view('admin/carousel-add');
+    }
+    public function save_carousel()
+    {
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '3072';
+        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
+
+        //图片上传操作
+        $this -> load -> library('upload', $config);
+        /**
+        $this -> upload -> do_upload('admin_photo');
+         */
+
+        $this -> upload -> do_upload('new_carousel');
+
+        $upload_data = $this -> upload -> data();
+
+        $new_carousel = 'uploads/'.$upload_data[file_name];
+        $row = $this -> carousel_model -> save_carousel($new_carousel);
+        if($row>0){
+            redirect('admin/intro_mgr');
+        }
+    }
+    public function delete_carousel($carousel_id)
+    {
+        $row = $this -> carousel_model -> delete_carousel($carousel_id);
+        if($row > 0){
+            redirect('admin/intro_mgr');
+        }
+    }
     /**
      *   @admin_mgr
      *   @admin
@@ -549,11 +693,6 @@ class Admin extends CI_Controller {
        
         $upload_data = $this -> upload -> data();
 
-
-
-
-        
-
         if ( $upload_data['file_size'] > 0 ) {
             //数据库中存photo的路径
             $photo_url = 'uploads/'.$upload_data['file_name'];
@@ -567,7 +706,7 @@ class Admin extends CI_Controller {
 
         $this -> load -> model('team_model');
 
-        $row = $this -> team_model -> updata_by_all($id,$name,$desc,$photo_url);
+        $row = $this -> team_model -> updata_by_all($id,$name,$type,$desc,$photo_url);
         
         if($row>0){
             redirect('admin/team_mgr');
@@ -662,8 +801,6 @@ class Admin extends CI_Controller {
         $FAQ_title = $this -> input -> post('FAQ_title');
         $FAQ_content = $this -> input -> post('FAQ_content');
         $row = $this -> faq_model -> save_question($FAQ_title, $FAQ_content);
-        // echo $row;
-        // die();
 
         if($row > 0){
             redirect('admin/question_mgr');
@@ -696,7 +833,7 @@ class Admin extends CI_Controller {
     *   @isliuwei
     *   @16/08/23
     */
-   
+
     public function update_contact()
     {
         $id = $this -> input -> post('id');
@@ -706,9 +843,28 @@ class Admin extends CI_Controller {
         $phone = $this -> input -> post('phone');
         $wechat = $this -> input -> post('wechat');
         $addr = $this -> input -> post('addr');
-        $row = $this -> contact_model -> update_contact($id, $tel, $mail, $website, $phone, $wechat, $addr);
-        // echo $row;
-        // die();
+        $longitude = $this -> input -> post('longitude');
+        $latitude = $this -> input -> post('latitude');
+        $QR_old_url = $this -> input -> post('QR_old_url');
+
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '3072';
+        $config['file_name'] = date("YmdHis") . '_' . rand(10000, 99999);
+        $this -> load -> library('upload', $config);
+        $this -> upload -> do_upload('new_QR');
+        $upload_data = $this -> upload -> data();
+        $QR_url = 'uploads/'.$upload_data['file_name'];
+
+        if ( $upload_data['file_size'] > 0 ) {
+            //数据库中存photo的路径
+            $QR_url = 'uploads/'.$upload_data['file_name'];
+        }else{
+            //如果不上传图片,则使用默认图片
+            $QR_url = $QR_old_url;
+        }
+
+        $row = $this -> contact_model -> update_contact($id, $tel, $mail, $website, $phone, $wechat, $addr, $QR_url, $longitude, $latitude);
 
         if($row > 0){
             redirect('admin/contact_mgr');
@@ -716,51 +872,6 @@ class Admin extends CI_Controller {
             echo '未修改或修改失败！';
         }   
     }
-    // public function update_contact()
-    // {
-    //     $tel = $this -> input -> post('tel');
-    //     $mail = $this -> input -> post('mail');
-    //     $website = $this -> input -> post('website');
-    //     $phone = $this -> input -> post('phone');
-    //     $wechat = $this -> input -> post('wechat');
-    //     $addr = $this -> input -> post('addr');
-    //     $row = $this -> contact_model -> update_contact($tel, $mail, $website, $phone, $wechat, $addr);
-    //     if($row > 0){
-    //         redirect('admin/contact_mgr');
-    //     }else{
-    //         echo '未修改或修改失败！';
-    //     }   
-    // }
-    
-        /**
-    *   @admin_mgr
-    *   @admin活动列表页面
-    *   @isliuwei
-    *   @16/08/23
-    */
-   
-    // public function edit_news($news_id)
-    // {
-    //     $this -> load -> model('activity_model');
-    //     $news = $this -> activity_model -> get_by_id($news_id);
-    //     $this -> load -> view('admin/news-edit', array('news' => $news));
-    // }
-
-    // public function update_news()
-    // {
-    //     $this -> load -> model('activity_model');
-    //     $activity_id = $this -> input -> post('activity_id');
-    //     $activity_title = $this -> input -> post('activity_title');
-    //     $activity_desc = $this -> input -> post('activity_desc');
-    //     $activity_content = $this -> input -> post('activity_content');
-    //     $row = $this -> activity_model -> update_news($activity_id, $activity_title, $activity_desc, $activity_content);
-    //     if($row >0){
-    //         redirect('admin/news_mgr');
-    //     }else{
-    //         echo '未修改或修改失败！';
-    //     }
-    // }
-
 
     public function news_mgr()
     {
@@ -799,9 +910,6 @@ class Admin extends CI_Controller {
             );
             $this -> load -> view('admin/news-mgr',$data);
         }
-
-
-
     }
 
     public function add_news()
@@ -831,9 +939,6 @@ class Admin extends CI_Controller {
             redirect('admin/save_news');
         }
 
-
-
-
     }
 
     public function delete_news()
@@ -861,7 +966,6 @@ class Admin extends CI_Controller {
         }
     }
 
-
     public function update_news()
     {
         $id = $this -> input -> post('news_id');
@@ -877,8 +981,6 @@ class Admin extends CI_Controller {
         $this -> upload -> do_upload('news_photo');
         $upload_data = $this -> upload -> data();
         $photo_url = 'uploads/'.$upload_data['file_name'];
-
-
 
         if ( $upload_data['file_size'] > 0 ) {
             //数据库中存photo的路径
@@ -898,62 +1000,58 @@ class Admin extends CI_Controller {
 
     }
 
-
-     public function update_nav_ch()
-     {
-         $ch_id = $this -> input -> get('ch_id');
-         $ch_show = $this -> input -> get('ch_show');
-         $row = $this -> nav_model -> update_nav_ch($ch_id,$ch_show);
-         if($row>0){
-             redirect('admin/nav_mgr');
-         }
-
-     }
-
-    public function update_nav_en()
+    public function nav_mgr()
     {
-        $en_id = $this -> input -> get('en_id');
-        $en_show = $this -> input -> get('en_show');
-        $row = $this -> nav_model -> update_nav_en($en_id,$en_show);
-        if($row>0){
-            redirect('admin/nav_mgr');
+        $result = $this -> nav_model -> get_all();
+        $data = array(
+            'navs' => $result
+        );
+
+        if($data)
+        {
+            $this -> load -> view('admin/nav-mgr',$data);
         }
 
     }
 
+    public function change_nav()
+    {
+        $id = $this -> input -> get('id');
+        $isShow = $this -> input -> get('isShow');
+        $row = $this -> nav_model -> update_show($id,$isShow);
+        if($row>0)
+        {
+            echo "success";
+        }else{
+            echo "fail";
+        }
+    }
 
+    public function get_chn_nav()
+    {
 
+        $navInfoChn = $this -> i18n_model -> get_Info_isShow_ch();
 
+        if($navInfoChn){
+            $data = array(
+                'chnNavs' => $navInfoChn
+            );
+            echo json_encode($data);
+        }
+        
+        
+    }
 
+    public function get_en_nav()
+    {
+        $navInfoEn = $this -> i18n_model -> get_Info_isShow_en();
 
+        if($navInfoEn){
+            $data = array(
+                'enNavs' => $navInfoEn
+            );
+            echo json_encode($data);
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 }

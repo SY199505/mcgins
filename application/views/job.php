@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
-	<title>招贤纳士</title>
+	<title>招聘信息</title>
 	<base href="<?php echo site_url();?>">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
@@ -29,8 +29,7 @@
 			</div>
 			<div class="recruit-teacher">
 				<div class="require col-md-10 col-md-offset-1">
-					岗位要求：
-					<?php 
+					<?php
 					foreach($jobInfo as $job){
 					?>
 						<h3><?php echo $job -> job_title; ?></h3>

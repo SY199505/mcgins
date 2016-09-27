@@ -31,8 +31,8 @@
 
 						<li>
 							<a href="welcome/article/<?php  echo $activity -> activity_id;?>">
-								<img style="width:230px;height:128px;" src="<?php  echo $activity -> activity_img;?>" class="img-responsive center-block col-md-4 col-sm-12" alt="">
-								<div class="col-md-7 col-sm-12 text-center">
+								<img style="width:230px;height:128px;" src="<?php  echo $activity -> activity_img;?>" class="img-responsive center-block col-md-4 col-xs-12" alt="">
+								<div class="col-md-7  text-center ">
 									<h4><?php  echo $activity -> activity_title;?></h4>
 									<p><?php  echo mb_substr($activity -> activity_content, 0,100)."......";?></p>
 								</div>

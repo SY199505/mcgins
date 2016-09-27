@@ -25,16 +25,17 @@ class Team_model extends CI_Model {
         $this -> db -> insert('t_team', array(
             'type' => $type,
             'name' => $name,
-            'img' => $img,
+            'img' => $photo_url,
             'desc' => $desc
         ));
         return $this -> db -> affected_rows();
     }
 
-    public function updata_by_all($id,$name,$desc,$photo_url)
+    public function updata_by_all($id,$name,$type,$desc,$photo_url)
     {
     	$data = array(
     		'name' => $name,
+            'type' => $type,
     		'desc' => $desc,
     		'img' => $photo_url
     	);

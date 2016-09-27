@@ -32,9 +32,9 @@
 			<div id="course-plan" class="text-center">
 				<p class="title">麦金思专业的学习顾问和老师会根据孩子的实际情况酌情安排最合适的学习规划。</p>
 				<!-- <img src="img/learn-plan.jpg" alt="" class="center-block img-responsive"> -->
-				<div id="main" class="center-block" style="width:70%;height:400px;"></div>
+<!--				<div id="main" class="center-block" style="width:70%;height:400px;"></div>-->
 				<div style="overflow-y: hidden">
-					
+					<span class="visible-xs">左滑还有更多<i class="fa fa-hand-o-right" aria-hidden="true"></i></span>
 				<table class="col-md-10 col-md-offset-1">
 					<thead class="">
 						<tr>

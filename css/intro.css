@@ -1,9 +1,15 @@
-
 #banner{
 	background: url(../img/banner.jpg) no-repeat;
 	background-size: cover; 
 	margin-bottom: 1%;
 	margin-top: 140px;
+}
+@media all and (max-width: 768px) {
+
+	#banner{
+		margin-top: 50px;
+	}
+
 }
 #banner p{
 	color: #ffffff;
@@ -79,10 +85,5 @@
 	
  }
 
-@media (max-width: 1080px){
-	#banner{
-		margin-top: 50px;
-	}	
-	
-}
+
 
