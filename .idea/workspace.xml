@@ -4,8 +4,12 @@
     <bookmark url="file://$PROJECT_DIR$/application/views/admin/admin-sidebar.php" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="a5da3558-25f0-4048-9b10-b77a1de2a34c" name="Default" comment="导航栏显示隐藏勾选">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/models/nav_model.php" />
+=======
+    <list default="true" id="a5da3558-25f0-4048-9b10-b77a1de2a34c" name="Default" comment="">
+>>>>>>> Stashed changes
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/admin.php" afterPath="$PROJECT_DIR$/application/controllers/admin.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/welcome.php" afterPath="$PROJECT_DIR$/application/controllers/welcome.php" />
@@ -334,6 +338,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< Updated upstream
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -374,6 +379,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+=======
+>>>>>>> Stashed changes
               <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -616,11 +623,19 @@
       <option name="project" value="LOCAL" />
       <updated>1472745220572</updated>
     </task>
+<<<<<<< Updated upstream
     <task id="LOCAL-00007" summary="细节调整，大家来找茬吧，测试浏览器兼容，搜狗，360...">
       <created>1472824155360</created>
       <option name="number" value="00007" />
       <option name="project" value="LOCAL" />
       <updated>1472824155360</updated>
+=======
+    <task id="LOCAL-00007" summary="完善header和新闻的CURD操作">
+      <created>1472745527197</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1472745527198</updated>
+>>>>>>> Stashed changes
     </task>
     <option name="localTasksCounter" value="8" />
     <servers />
